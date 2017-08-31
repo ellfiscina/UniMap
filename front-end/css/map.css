@@ -1,0 +1,107 @@
+body{
+	background-color: #59abe3;
+}
+
+header h1{
+	text-align: center;
+	font-size: 50px;
+	color: #3A539B;
+}
+
+section{
+	height: 1000px;
+	position: relative;
+}
+
+section #main{
+	background-color: #ecf0f1;
+	width: 90%;
+	height: 700px;
+	position: absolute;
+	left: 60px;
+	top: 30px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px 0 #7f8c8d;
+}
+
+#left, #right{
+	
+	height: 600px;
+	width: 40%;
+	left: 4%;
+    margin: 4% 3%;
+}
+#left img{
+	height: 600px;
+	position: relative;
+	z-index: -1;
+	display: none;
+}
+#left div{
+	position: relative;
+	z-index: 100;
+}
+#middle{	
+	height: 600px;
+	width: 33%;
+}
+#sala1, #sala2, #sala3, #sala4{
+	height: 600px;
+	width: 33%;
+	padding: 10px 0;
+}
+.room, .facility{
+	background-color: blue;
+	padding: 2%;
+	height: 55px;
+	border: 1px solid #ddd;
+}
+.biblioteca{
+	background-color: blue;
+	padding: 2%;
+	height: 495px;
+	border: 1px solid #ddd;
+}
+.empty{
+	background-color: #f4b350;
+	height: 30px;
+	border: 1px solid #ddd;
+}
+.pagination {
+  border-radius: 0px;
+}
+.pagination > li {
+  display: block;
+  text-align: center;
+}
+.pagination > li > a,
+.pagination > li > span {
+	width: 42px;
+  background-color: transparent;
+  border:none;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#nav{
+	width: auto;
+    left: 2%;
+    top: 425px;
+}
+.fa{
+	right: 3.5px;
+    position: relative;
+}
+.usedroom{
+	background-color: red;
+}
+.emptyroom{
+	background-color: green;
+}
