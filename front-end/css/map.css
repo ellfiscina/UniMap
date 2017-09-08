@@ -24,20 +24,20 @@ section #main{
 	box-shadow: 5px 5px 5px 0 #7f8c8d;
 }
 
-#left, #right{
-	
+.left, .right{
+	background-color: #f4b350;
 	height: 600px;
 	width: 40%;
 	left: 4%;
     margin: 4% 3%;
 }
-#left img{
+.left img{
 	height: 600px;
 	position: relative;
 	z-index: -1;
 	display: none;
 }
-#left div{
+.left div{
 	position: relative;
 	z-index: 100;
 }
@@ -45,15 +45,21 @@ section #main{
 	height: 600px;
 	width: 33%;
 }
-#sala1, #sala2, #sala3, #sala4{
+.sala1, .sala2, .sala3, .sala4{
 	height: 600px;
 	width: 33%;
 	padding: 10px 0;
 }
-.room, .facility{
+.gRoom, .room, .facility{
 	background-color: blue;
 	padding: 2%;
 	height: 55px;
+	border: 1px solid #ddd;
+}
+.lab{
+	background-color: blue;
+	padding: 2%;
+	height: 82.5px;
 	border: 1px solid #ddd;
 }
 .biblioteca{
@@ -62,7 +68,7 @@ section #main{
 	height: 495px;
 	border: 1px solid #ddd;
 }
-.empty{
+.empty, .gEmpty{
 	background-color: #f4b350;
 	height: 30px;
 	border: 1px solid #ddd;
@@ -93,11 +99,7 @@ section #main{
 #nav{
 	width: auto;
     left: 2%;
-    top: 425px;
-}
-.fa{
-	right: 3.5px;
-    position: relative;
+    top: 496px;
 }
 .usedroom{
 	background-color: red;
