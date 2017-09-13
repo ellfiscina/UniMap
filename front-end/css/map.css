@@ -50,7 +50,7 @@ section #main{
 	width: 33%;
 	padding: 10px 0;
 }
-.gRoom, .room, .facility{
+.gRoom, .room, .facility,.fRoom{
 	background-color: blue;
 	padding: 2%;
 	height: 55px;
