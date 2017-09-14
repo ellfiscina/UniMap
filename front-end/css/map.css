@@ -51,7 +51,7 @@ section #main{
 	padding: 10px 0;
 }
 
-.gRoom, .room,.fRoom{
+.gRoom, .room,.fRoom, .sRoom{
 	background-color: blue;
 	padding: 2%;
 	height: 64.5px;
@@ -75,7 +75,7 @@ section #main{
 	height: 145px;
 	border: 1px solid #ddd;
 }
-.sRoom, .lab{
+.sRoom2, .lab{
 	background-color: blue;
 	padding: 2%;
 	height: 96.8px;

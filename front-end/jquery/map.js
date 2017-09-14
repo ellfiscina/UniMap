@@ -106,6 +106,7 @@ $(document).ready(function(){
 		$(".fCRoom").hide();
 		$(".lab").hide();
 		$(".sRoom").hide();
+		$(".sRoom2").hide();
 		$(".sCRoom").hide();
 		$(".fCornerRoom").hide();
 		$(".sCornerRoom").hide();
@@ -124,6 +125,7 @@ $(document).ready(function(){
 				break;
 			case 2: 
 				$(".sRoom").show();
+				$(".sRoom2").show();
 				$(".sCRoom").show();
 				$(".sCornerRoom").show();
 				break;
