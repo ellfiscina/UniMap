@@ -16,7 +16,7 @@ section{
 section #main{
 	background-color: #ecf0f1;
 	width: 90%;
-	height: 700px;
+	height: 900px;
 	position: absolute;
 	left: 60px;
 	top: 30px;
@@ -26,7 +26,7 @@ section #main{
 
 .left, .right{
 	background-color: #f4b350;
-	height: 600px;
+	height: 750px;
 	width: 40%;
 	left: 4%;
     margin: 4% 3%;
@@ -50,29 +50,50 @@ section #main{
 	width: 33%;
 	padding: 10px 0;
 }
-.gRoom, .room, .facility,.fRoom{
+
+.gRoom, .room,.fRoom{
 	background-color: blue;
 	padding: 2%;
-	height: 55px;
+	height: 64.5px;
 	border: 1px solid #ddd;
 }
-.lab{
+.facility, .fCornerRoom, .sCornerRoom{
+	background-color: green;
+	padding: 2%;
+	height: 120px;
+	border: 1px solid #ddd;
+}
+.fCRoom{
+	background-color: red;
+	padding: 2%;
+	height: 116px;
+	border: 1px solid #ddd;
+}
+.sCRoom{
+	background-color: pink;
+	padding: 2%;
+	height: 145px;
+	border: 1px solid #ddd;
+}
+.sRoom, .lab{
 	background-color: blue;
 	padding: 2%;
-	height: 82.5px;
+	height: 96.8px;
 	border: 1px solid #ddd;
 }
 .biblioteca{
 	background-color: blue;
 	padding: 2%;
-	height: 495px;
+	height: 580px;
 	border: 1px solid #ddd;
 }
-.empty, .gEmpty{
+.empty{
 	background-color: #f4b350;
 	height: 30px;
 	border: 1px solid #ddd;
 }
+
+
 .pagination {
   border-radius: 0px;
 }
@@ -99,7 +120,7 @@ section #main{
 #nav{
 	width: auto;
     left: 2%;
-    top: 496px;
+    top: 540px;
 }
 .usedroom{
 	background-color: red;

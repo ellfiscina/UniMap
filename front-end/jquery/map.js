@@ -103,19 +103,30 @@ $(document).ready(function(){
 		$(".biblioteca").hide();
 		$(".facility").hide();
 		$(".fRoom").hide();
+		$(".fCRoom").hide();
 		$(".lab").hide();
 		$(".sRoom").hide();
+		$(".sCRoom").hide();
+		$(".fCornerRoom").hide();
+		$(".sCornerRoom").hide();
 
 		switch(andar){
-			case 0: $(".gRoom").show();
-					$(".biblioteca").show();
-					$(".facility").show();
-					$(".lab").show();
-			break;
-			case 1: $(".fRoom").show();
-			break;
-			case 2: $(".sRoom").show();
-			break;
+			case 0: 
+				$(".gRoom").show();
+				$(".biblioteca").show();
+				$(".facility").show();
+				$(".lab").show();
+				break;
+			case 1: 
+				$(".fRoom").show();
+				$(".fCRoom").show();
+				$(".fCornerRoom").show();
+				break;
+			case 2: 
+				$(".sRoom").show();
+				$(".sCRoom").show();
+				$(".sCornerRoom").show();
+				break;
 		}
 	}
 });
