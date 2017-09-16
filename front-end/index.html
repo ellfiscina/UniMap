@@ -3,124 +3,175 @@
 <head>
 	<meta charset="utf-8">
 	<title>UniMap</title>
-	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/map.css">
+	<link rel="stylesheet" type="text/css" href="css/map-responsive.css">
 </head>
 <body>
 	<header>
 		<h1>UniMap</h1>
 	</header>
 	<section>
-		<div class="container col-md-12 hidden-xs hidden-sm" id="main">
+		<div class="container" id="main">
 			<div class="row">
-				<div class="col-sm-5 left">
+				<div class="col-sm-5 left hidden-xs hidden-sm">
 					<div class="col-sm-3 sala1">
 						<div>
-							<div class="biblioteca">biblioteca</div>
-							<div class="fCRoom">Copa</div>
-							<div class="fCRoom"></div>
-							<div class="fCRoom"></div>
-							<div class="fCRoom"></div>
-							<div class="fCRoom"></div>
-							<div class="sCRoom">Copa</div>
-							<div class="sCRoom"></div>
-							<div class="sCRoom"></div>
-							<div class="sCRoom"></div>
+							<div class="biblioteca"><p>Biblioteca</p></div>
+							<div class="fCRoom"><p>Copa</p></div>
+							<div class="fCRoom"><p>Colegiado</p></div>
+							<div class="fCRoom"><p>Colegiado</p></div>
+							<div class="fCRoom"><p>Colegiado de Engenharia da Computação</p></div>
+							<div class="fCRoom"><p>Colegiado de Engenharia Mecânica</p></div>
+							<div class="sCRoom"><p>Copa</p></div>
+							<div class="sCRoom"><p>Colegiado</p></div>
+							<div class="sCRoom"><p>Colegiado</p></div>
+							<div class="sCRoom"><p>Colegiado</p></div>
 						</div>
-						<div class="empty">banheiro</div>
+						<div class="empty"><p>Banheiro</p></div>
 						<div>
-							<div class="facility"></div>
-							<div class="fCornerRoom"></div>
-							<div class="sCornerRoom"></div>
+							<div class="gFacility"><p></p></div>
+							<div class="fCornerRoom"><p>Lab. de Hardware</p></div>
+							<div class="sCornerRoom"><p>Lab. de Computação Gráfica</p></div>
 						</div>
-					</div>
-					<div class="col-sm-6" id="middle"></div>
+					</div> <!-- lado esquerdo -->
+					<div class="col-sm-6" id="middle">
+						<div class="rampa"><p>Rampa</p></div>
+						<div>
+							<div class="gFacility"><p></p></div>
+							<div class="fFacility"><p></p></div>
+							<div class="sFacility"><p>PEMD</p></div>
+						</div>
+						<div class="nothing"></div>
+						<div>
+							<div class="gSalinha"></div>
+							<div class="fSalinha"></div>
+							<div class="sSalinha"></div>
+						</div>
+						<div></div>
+					</div> <!-- Meio -->
 					<div class="col-sm-3 sala2">
 						<div>
-							<div class="gRoom">Lab9</div>
-							<div class="gRoom">Lab8</div>
-							<div class="gRoom">Lab7</div>
-							<div class="gRoom">Lab6</div>
-							<div class="gRoom">Lab5</div>
-							<div class="gRoom">Lab4</div>
-							<div class="gRoom">Lab3</div>
-							<div class="gRoom">Lab2</div>
-							<div class="gRoom">Lab1</div>
-							<div class="fRoom"></div>
-							<div class="fRoom"></div>
-							<div class="fRoom"></div>
-							<div class="fRoom"></div>
-							<div class="fRoom"></div>
-							<div class="fRoom"></div>
-							<div class="fRoom"></div>
-							<div class="fRoom"></div>
-							<div class="fRoom"></div>
-							<div class="sRoom2"></div>
-							<div class="sRoom2"></div>
-							<div class="sRoom2"></div>
-							<div class="sRoom2"></div>
-							<div class="sRoom2"></div>
-							<div class="sRoom2"></div>
+							<div class="gRoom"><p>Fábrica de Software</p></div>
+							<div class="gRoom"><p>Lab. de Redes</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab. de Robótica</p></div>
+							<div class="gRoom"><p>Lab. de Banco de Dados</p></div>
+							<div class="gRoom"><p>Lab. de Programação Avançada</p></div>
+							<div class="gRoom"><p>Lab. de Programação Básica</p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
 						</div>
-						<div class="empty">escada</div>
+						<div class="empty"><p>Escada</p></div>
 						<div>
-							<div class="facility">SIC</div>
-							<div class="fCornerRoom"></div>
-							<div class="sCornerRoom"></div>
-						</div>
-						
-					</div>
-				</div>
+							<div class="gFacility"><p>SIC</p></div>
+							<div class="fCornerRoom"><p>Sala 32</p></div>
+							<div class="sCornerRoom"><p></p></div>
+						</div>	
+					</div> <!--Lado direito-->
+				</div> <!-- Predio do colegiado -->
 
-				<div class="col-sm-5 right">
+				<div class="col-sm-5 right hidden-xs hidden-sm">
 					<div class="col-sm-3 sala3">
 						<div>
-							<div class="gRoom"><p>1</p></div>
-							<div class="gRoom"><p>2</p></div>
-							<div class="gRoom"><p>3</p></div>
-							<div class="gRoom"><p>4</p></div>
-							<div class="gRoom"><p>5</p></div>
-							<div class="gRoom"><p>6</p></div>
-							<div class="gRoom"><p>7</p></div>
-							<div class="gRoom"><p>8</p></div>
-							<div class="gRoom"><p>9</p></div>
-							<div class="fRoom"><p>10</p></div>
-							<div class="fRoom"><p>11</p></div>
-							<div class="fRoom"><p>12</p></div>
-							<div class="fRoom"><p>13</p></div>
-							<div class="fRoom"><p>14</p></div>
-							<div class="fRoom"><p>15</p></div>
-							<div class="fRoom"><p>16</p></div>
-							<div class="fRoom"><p>17</p></div>
-							<div class="fRoom"><p>18</p></div>
-							<div class="sRoom"><p>19</p></div>
-							<div class="sRoom"><p>20</p></div>
-							<div class="sRoom"><p>21</p></div>
-							<div class="sRoom"><p>22</p></div>
-							<div class="sRoom"><p>23</p></div>
-							<div class="sRoom"><p>24</p></div>
-							<div class="sRoom"><p>25</p></div>
-							<div class="sRoom"><p>26</p></div>
-							<div class="sRoom"><p>27</p></div>
+							<div class="gRoom"><p>Sala 1</p></div>
+							<div class="gRoom"><p>Sala 2</p></div>
+							<div class="gRoom"><p>Sala 3</p></div>
+							<div class="gRoom"><p>Sala 4</p></div>
+							<div class="gRoom"><p>Sala 5</p></div>
+							<div class="gRoom"><p>Sala 6</p></div>
+							<div class="gRoom"><p>Sala 7</p></div>
+							<div class="gRoom"><p>Sala 8</p></div>
+							<div class="gRoom"><p>Sala 9</p></div>
+							<div class="fRoom"><p>Sala 10</p></div>
+							<div class="fRoom"><p>Sala 11</p></div>
+							<div class="fRoom"><p>Sala 12</p></div>
+							<div class="fRoom"><p>Sala 13</p></div>
+							<div class="fRoom"><p>Sala 14</p></div>
+							<div class="fRoom"><p>Sala 15</p></div>
+							<div class="fRoom"><p>Sala 16</p></div>
+							<div class="fRoom"><p>Sala 17</p></div>
+							<div class="fRoom"><p>Sala 18</p></div>
+							<div class="sRoom"><p>Sala 19</p></div>
+							<div class="sRoom"><p>Sala 20</p></div>
+							<div class="sRoom"><p>Sala 21</p></div>
+							<div class="sRoom"><p>Sala 22</p></div>
+							<div class="sRoom"><p>Sala 23</p></div>
+							<div class="sRoom"><p>Sala 24</p></div>
+							<div class="sRoom"><p>Sala 25</p></div>
+							<div class="sRoom"><p>Sala 26</p></div>
+							<div class="sRoom"><p>Sala 27</p></div>
 						</div>
-						<div class="empty">banheiro</div>
-						<div class="facility">DCE</div>
-					</div>
-					<div class="col-sm-6" id="middle"></div>
+						<div class="empty"><p>Banheiro</p></div>
+						<div>
+							<div class="gFacility"><p>DCE</p></div>
+							<div class="fCornerRoom"><p>Sala 28</p></div>
+							<div class="sCornerRoom"><p>Sala 29</p></div>
+						</div>
+					</div> <!-- Lado esquerdo -->
+					<div class="col-sm-6" id="middle">
+						<div class="rampa"><p>Rampa</p></div>
+						<div>
+							<div class="gFacility"><p>Cantina</p></div>
+							<div class="fFacility"><p></p></div>
+							<div class="sFacility"><p>ARI</p></div>
+						</div>
+						<div class="nothing"></div>
+						<div>
+							<div class="gSalinha"></div>
+							<div class="fSalinha"></div>
+							<div class="sSalinha"></div>
+						</div>
+					</div> <!-- Meio -->
 					<div class="col-sm-3 sala4">
-						<div class="lab">1</div>
-						<div class="lab">2</div>
-						<div class="lab">3</div>
-						<div class="lab">4</div>
-						<div class="lab">5</div>
-						<div class="lab">6</div>
-						<div class="empty">escada</div>
-						<div class="facility">Xerox</div>
-					</div>
-				</div>
-				<div class="col-sm-1" id="nav">
+						<div>
+							<div class="lab"><p></p></div>
+							<div class="lab"><p>Lab de Citologia/Fisiologia Vegetal</p></div>
+							<div class="lab"><p>Lab. de Microscopia</p></div>
+							<div class="lab"><p>Lab. de Química dos Solos</p></div>
+							<div class="lab"><p>Lab. de Química Orgânica/Bioquímica Vegetal</p></div>
+							<div class="lab"><p>Lab. de Química</p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="sRoom6"><p>Lab. de Física Experimental</p></div>
+							<div class="sRoom6"><p>Lab. de Física Experimental</p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p>Lab. de Eletrônica Analógica</p></div>
+						</div>
+						<div class="empty"><p>Escada</p></div>
+						<div>
+							<div class="gFacility"><p>Xerox</p></div>
+							<div class="fCornerRoom"><p>Lab. de Empreendedorismo</p></div>
+							<div class="sCornerRoom"><p>Lab. de Instalações Elétricas</p></div>
+						</div>
+					</div> <!-- Lado direito -->
+				</div> <!-- Predio de aula -->
+				<div class="col-sm-1 hidden-xs hidden-sm" id="nav">
 					<nav>
 						<ul class="pagination pagination-lg">
 							<li class="twoli"><a class="two" href="#">2</a></li>
@@ -132,61 +183,172 @@
 			</div>
 		</div>
 
-		<div id="myCarousel" class="carousel slide hidden-md hidden-lg hidden-xl" data-ride="carousel">
+		<div id="myCarousel" class="carousel slide hidden-md hidden-lg hidden-xl" data-ride="carousel" data-interval="false">
 
+			<ol class="carousel-indicators">
+     			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      			<li data-target="#myCarousel" data-slide-to="1"></li>
+      		</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" >
 				<div class="item active">
-					<div class="col-sm-5 left">
-						<div class="col-sm-3 sala1">
-							<div class="biblioteca">biblioteca</div>
-							<div class="gEmpty">banheiro</div>
-							<div class="gRoom"></div>
+					<div class="col-sm-5 leftC">
+					<div class="col-sm-3 sala1">
+						<div>
+							<div class="biblioteca"><p>Biblioteca</p></div>
+							<div class="fCRoom"><p>Copa</p></div>
+							<div class="fCRoom"><p>Colegiado</p></div>
+							<div class="fCRoom"><p>Colegiado</p></div>
+							<div class="fCRoom"><p>Colegiado de Engenharia da Computação</p></div>
+							<div class="fCRoom"><p>Colegiado de Engenharia Mecânica</p></div>
+							<div class="sCRoom"><p>Copa</p></div>
+							<div class="sCRoom"><p>Colegiado</p></div>
+							<div class="sCRoom"><p>Colegiado</p></div>
+							<div class="sCRoom"><p>Colegiado</p></div>
 						</div>
-						<div class="col-sm-6" id="middle"></div>
-						<div class="col-sm-3 sala2">
-							<div class="gRoom">Lab9</div>
-							<div class="gRoom">Lab8</div>
-							<div class="gRoom">Lab7</div>
-							<div class="gRoom">Lab6</div>
-							<div class="gRoom">Lab5</div>
-							<div class="gRoom">Lab4</div>
-							<div class="gRoom">Lab3</div>
-							<div class="gRoom">Lab2</div>
-							<div class="gRoom">Lab1</div>
-							<div class="gEmpty">escada</div>
-							<div class="facility">SIC</div>
+						<div class="empty"><p>Banheiro</p></div>
+						<div>
+							<div class="gFacility"><p></p></div>
+							<div class="fCornerRoom"><p>Lab. de Hardware</p></div>
+							<div class="sCornerRoom"><p></p></div>
 						</div>
-					</div>
+					</div> <!-- lado esquerdo -->
+					<div class="col-sm-6" id="middle">
+						<div class="rampa"><p>Rampa</p></div>
+						<div>
+							<div class="gFacility"><p></p></div>
+							<div class="fFacility"><p></p></div>
+							<div class="sFacility"><p>PEMD</p></div>
+						</div>
+						<div class="nothing"></div>
+						<div>
+							<div class="gSalinha"></div>
+							<div class="fSalinha"></div>
+							<div class="sSalinha"></div>
+						</div>
+						<div></div>
+					</div> <!-- Meio -->
+					<div class="col-sm-3 sala2">
+						<div>
+							<div class="gRoom"><p>Lab. de Programação Básica</p></div>
+							<div class="gRoom"><p>Lab. de Programação Avançada</p></div>
+							<div class="gRoom"><p>Lab. de Banco de Dados</p></div>
+							<div class="gRoom"><p>Lab. de Robótica</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab. de Redes</p></div>
+							<div class="gRoom"><p>Fábrica de Software</p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="fRoom"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+						</div>
+						<div class="empty"><p>Escada</p></div>
+						<div>
+							<div class="gFacility"><p>SIC</p></div>
+							<div class="fCornerRoom"><p></p></div>
+							<div class="sCornerRoom"><p></p></div>
+						</div>	
+					</div> <!--Lado direito-->
+				</div> <!-- Predio do colegiado -->
 				</div>
 
 				<div class="item">
-					<div class="col-sm-5 right">
-						<div class="col-sm-3 sala3">
-							<div class="gRoom">1</div>
-							<div class="gRoom">2</div>
-							<div class="gRoom">3</div>
-							<div class="gRoom">4</div>
-							<div class="gRoom">5</div>
-							<div class="gRoom">6</div>
-							<div class="gRoom">7</div>
-							<div class="gRoom">8</div>
-							<div class="gRoom">9</div>
-							<div class="gEmpty">banheiro</div>
-							<div class="gRoom">DCE</div>
+					<div class="col-sm-5 rightC">
+					<div class="col-sm-3 sala3">
+						<div>
+							<div class="gRoom"><p>Sala 1</p></div>
+							<div class="gRoom"><p>Sala 2</p></div>
+							<div class="gRoom"><p>Sala 3</p></div>
+							<div class="gRoom"><p>Sala 4</p></div>
+							<div class="gRoom"><p>Sala 5</p></div>
+							<div class="gRoom"><p>Sala 6</p></div>
+							<div class="gRoom"><p>Sala 7</p></div>
+							<div class="gRoom"><p>Sala 8</p></div>
+							<div class="gRoom"><p>Sala 9</p></div>
+							<div class="fRoom"><p>Sala 10</p></div>
+							<div class="fRoom"><p>Sala 11</p></div>
+							<div class="fRoom"><p>Sala 12</p></div>
+							<div class="fRoom"><p>Sala 13</p></div>
+							<div class="fRoom"><p>Sala 14</p></div>
+							<div class="fRoom"><p>Sala 15</p></div>
+							<div class="fRoom"><p>Sala 16</p></div>
+							<div class="fRoom"><p>Sala 17</p></div>
+							<div class="fRoom"><p>Sala 18</p></div>
+							<div class="sRoom"><p>Sala 19</p></div>
+							<div class="sRoom"><p>Sala 20</p></div>
+							<div class="sRoom"><p>Sala 21</p></div>
+							<div class="sRoom"><p>Sala 22</p></div>
+							<div class="sRoom"><p>Sala 23</p></div>
+							<div class="sRoom"><p>Sala 24</p></div>
+							<div class="sRoom"><p>Sala 25</p></div>
+							<div class="sRoom"><p>Sala 26</p></div>
+							<div class="sRoom"><p>Sala 27</p></div>
 						</div>
-						<div class="col-sm-6" id="middle"></div>
-						<div class="col-sm-3 sala4">
-							<div class="lab">1</div>
-							<div class="lab">2</div>
-							<div class="lab">3</div>
-							<div class="lab">4</div>
-							<div class="lab">5</div>
-							<div class="lab">6</div>
-							<div class="gEmpty">escada</div>
-							<div class="facility">Xerox</div>
+						<div class="empty"><p>Banheiro</p></div>
+						<div>
+							<div class="gFacility"><p>DCE</p></div>
+							<div class="fCornerRoom"><p>Sala 28</p></div>
+							<div class="sCornerRoom"><p>Sala 29</p></div>
 						</div>
-					</div>
+					</div> <!-- Lado esquerdo -->
+					<div class="col-sm-6" id="middle">
+						<div class="rampa"><p>Rampa</p></div>
+						<div>
+							<div class="gFacility"><p>Cantina</p></div>
+							<div class="fFacility"><p></p></div>
+							<div class="sFacility"><p>ARI</p></div>
+						</div>
+						<div class="nothing"></div>
+						<div>
+							<div class="gSalinha"></div>
+							<div class="fSalinha"></div>
+							<div class="sSalinha"></div>
+						</div>
+					</div> <!-- Meio -->
+					<div class="col-sm-3 sala4">
+						<div>
+							<div class="lab"><p></p></div>
+							<div class="lab"><p>Lab. de Citologia/Fisiologia Vegetal</p></div>
+							<div class="lab"><p>Lab. de Microscopia</p></div>
+							<div class="lab"><p>Lab. de Química dos Solos</p></div>
+							<div class="lab"><p>Lab. de Química Orgânica/Bioquímica Vegetal</p></div>
+							<div class="lab"><p>Lab. de Química</p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="fRoom8"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+						</div>
+						<div class="empty"><p>Escada</p></div>
+						<div>
+							<div class="gFacility"><p>Xerox</p></div>
+							<div class="fCornerRoom"><p></p></div>
+							<div class="sCornerRoom"><p></p></div>
+						</div>
+					</div> <!-- Lado direito -->
+				</div> <!-- Predio de aula -->
 				</div>
 
 				<div class="col-sm-1" id="nav">
@@ -201,19 +363,22 @@
 			</div>
 
 			<!-- Left and right controls -->
-			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			<!--a class="left carousel-control" href="#myCarousel" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				<span class="sr-only">Previous</span>
 			</a>
 			<a class="right carousel-control" href="#myCarousel" data-slide="next">
 				<span class="glyphicon glyphicon-chevron-right"></span>
 				<span class="sr-only">Next</span>
-			</a>
+			</a-->
 		</div>
 	</section>
 	<footer></footer>
 </body>
-	<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="jquery/map.js"></script>
+
 </html>

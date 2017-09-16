@@ -31,19 +31,11 @@ section #main{
 	left: 4%;
     margin: 4% 3%;
 }
-.left img{
-	height: 600px;
-	position: relative;
-	z-index: -1;
-	display: none;
-}
-.left div{
-	position: relative;
-	z-index: 100;
-}
+
 #middle{	
 	height: 600px;
 	width: 33%;
+	padding: 10px 30px;
 }
 .sala1, .sala2, .sala3, .sala4{
 	height: 600px;
@@ -51,49 +43,51 @@ section #main{
 	padding: 10px 0;
 }
 
-.gRoom, .room,.fRoom, .sRoom{
-	background-color: blue;
+.gRoom, .room,.fRoom, .sRoom,
+.fCornerRoom, .sCornerRoom, 
+.fCRoom, .sCRoom, .sRoom6, .lab,
+.fRoom8, .biblioteca, .empty,
+.gFacility, .fFacility, .sFacility,
+.gSalinha, .fSalinha, .sSalinha{
+	background-color: #e67e22;
 	padding: 2%;
-	height: 64.5px;
-	border: 1px solid #ddd;
+	border: 1px solid #EB974E;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
-.facility, .fCornerRoom, .sCornerRoom{
-	background-color: green;
-	padding: 2%;
+
+.gRoom, .room,.fRoom, .sRoom{
+	height: 64.5px;
+}
+.gFacility, .fFacility, .sFacility, .fCornerRoom, .sCornerRoom{
 	height: 120px;
-	border: 1px solid #ddd;
 }
 .fCRoom{
-	background-color: red;
-	padding: 2%;
 	height: 116px;
-	border: 1px solid #ddd;
 }
 .sCRoom{
-	background-color: pink;
-	padding: 2%;
 	height: 145px;
-	border: 1px solid #ddd;
 }
-.sRoom2, .lab{
-	background-color: blue;
-	padding: 2%;
+.sRoom6, .lab{
 	height: 96.8px;
-	border: 1px solid #ddd;
+}
+.fRoom8{
+	height: 72.5px;
 }
 .biblioteca{
-	background-color: blue;
-	padding: 2%;
 	height: 580px;
-	border: 1px solid #ddd;
 }
 .empty{
 	background-color: #f4b350;
 	height: 30px;
-	border: 1px solid #ddd;
 }
-
-
+.nothing{
+	height: 430px;
+}
+.rampa, .gSalinha, .fSalinha, .sSalinha{
+	height: 60px;
+}
 .pagination {
   border-radius: 0px;
 }
@@ -120,7 +114,7 @@ section #main{
 #nav{
 	width: auto;
     left: 2%;
-    top: 540px;
+    top: 648px;
 }
 .usedroom{
 	background-color: red;
@@ -128,3 +122,27 @@ section #main{
 .emptyroom{
 	background-color: green;
 }
+.leftC, .rightC{
+	background-color: #f4b350;
+	height: 750px;
+	width: 83%;
+	left: 4%;
+    margin: 4% 3%;
+}
+.carousel-control.right {
+    right: -30px;
+}
+.carousel-control.left {
+    left: -30px;
+}
+.carousel-control.left, .carousel-control.right {
+    background:none;
+    background-image: none;
+    width: 6%;
+    height: auto;
+}
+p{
+	color: #ecf0f1;
+	text-align: center;
+}
+

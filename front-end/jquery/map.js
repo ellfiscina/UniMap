@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$.mobile.loading().hide();
 	var json = JSON.parse('["usedroom", "usedroom", "emptyroom" ]');
 	var j;
 	$(".groundli").addClass("disabled");
@@ -101,34 +102,52 @@ $(document).ready(function(){
 	function Hide(andar) {
 		$(".gRoom").hide();
 		$(".biblioteca").hide();
-		$(".facility").hide();
+		$(".gFacility").hide();
+		$(".fFacility").hide();
+		$(".sFacility").hide();
+		$(".gSalinha").hide();
+		$(".fSalinha").hide();
+		$(".sSalinha").hide();
 		$(".fRoom").hide();
 		$(".fCRoom").hide();
 		$(".lab").hide();
 		$(".sRoom").hide();
-		$(".sRoom2").hide();
+		$(".sRoom6").hide();
 		$(".sCRoom").hide();
 		$(".fCornerRoom").hide();
 		$(".sCornerRoom").hide();
+		$(".fRoom8").hide();
 
 		switch(andar){
 			case 0: 
 				$(".gRoom").show();
 				$(".biblioteca").show();
-				$(".facility").show();
+				$(".gFacility").show();
 				$(".lab").show();
+				$(".gSalinha").show();
 				break;
 			case 1: 
 				$(".fRoom").show();
 				$(".fCRoom").show();
 				$(".fCornerRoom").show();
+				$(".fRoom8").show();
+				$(".fFacility").show();
+				$(".fSalinha").show();
 				break;
 			case 2: 
 				$(".sRoom").show();
-				$(".sRoom2").show();
+				$(".sRoom6").show();
 				$(".sCRoom").show();
 				$(".sCornerRoom").show();
+				$(".sFacility").show();
+				$(".sSalinha").show();
 				break;
 		}
 	}
+	$("#myCarousel").swiperight(function() {
+      $(this).carousel('prev');
+    });
+   $("#myCarousel").swipeleft(function() {
+      $(this).carousel('next');
+   });
 });

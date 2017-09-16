@@ -1,0 +1,53 @@
+@media only screen and (min-device-width: 320px) 
+  and (max-device-width: 736px){
+	section #main{
+		width: 87%;
+		height: 1500px;
+	}
+	#nav{
+		top: 1340px;
+	}
+	.carousel-indicators {
+    	bottom: 4px;
+	}
+	.leftC, .rightC{
+		background-color: #f4b350;
+		height: 1450px;
+		width: 79%;
+		left: 4%;
+		margin: 4% 3%;
+	}
+	.nothing{
+		height: 550px;
+	}
+	.biblioteca{
+		height: 1025px;
+	}
+	.gFacility, .fFacility, .sFacility, .fCornerRoom, .sCornerRoom{
+		height: 250px;
+	}
+	.empty{
+		height: 150px;
+	}
+	.rampa, .gSalinha, .fSalinha, .sSalinha{
+		height: 190px;
+	}
+	.gRoom, .room, .fRoom, .sRoom {
+		height: 114px;
+	}
+	.fCRoom {
+		height: 205px;
+	}
+	.sCRoom {
+		height: 256px;
+	}
+	.sRoom6, .lab {
+		height: 171px;
+	}
+	.fRoom8 {
+		height: 128.5px;
+	}
+	p{
+		font-size: 23px;
+	}
+}
