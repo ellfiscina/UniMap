@@ -1,16 +1,49 @@
 body{
-	background-color: #59abe3;
+	background-color: #3498DB;
+}
+header h1{
+	font-size: 80px;
+	color: #E4F1FE;
+	text-align: center;
+	position: relative;
+	top: 80px;
+	font-weight: bold;
+}
+header{
+	height: 350px;
+	background-color: #3498DB;
+}
+ul{
+	list-style-type: none;
+	display: inline-block;
+}
+#login{
+	position: relative;
+    top: 25px;
+    right: 5px;
+    font-size: 18px;
+    color: #E4F1FE;
 }
 
-header h1{
-	text-align: center;
-	font-size: 50px;
-	color: #3A539B;
+.input-group {
+    text-align: right;
+    position: relative;
+    top: 8px;
+    right: 20px;
+}
+.input-group input {
+    height: 30px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding-left: 5px;
 }
 
 section{
 	height: 1000px;
 	position: relative;
+	background-color: #59abe3;
 }
 
 section #main{

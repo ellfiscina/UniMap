@@ -1,14 +1,25 @@
 @media only screen and (min-device-width: 320px) 
   and (max-device-width: 736px){
+  	section{
+  		height: 2000px;
+  	}
 	section #main{
-		width: 87%;
-		height: 1500px;
+		top: 100px;
+		width: 92%;
+    	left: 40px;
+		height: 1550px;
+	}
+	.carousel{
+		top: 100px;
 	}
 	#nav{
-		top: 1340px;
+		top: 1245px;
 	}
 	.carousel-indicators {
-    	bottom: 4px;
+    	bottom: -10px;
+	}
+	.carousel-indicators .active {
+  		background-color: #ffab60;
 	}
 	.leftC, .rightC{
 		background-color: #f4b350;
@@ -49,5 +60,9 @@
 	}
 	p{
 		font-size: 23px;
+	}
+
+	.pagination-lg>li>a{
+		font-size: 45px;
 	}
 }
