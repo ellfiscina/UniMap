@@ -11,17 +11,49 @@
 </head>
 <body>
 	<header>
-		<ul>
-			<li><a id="login" href="#">Login</a></li>
-			<li><div class="input-group">
- 			<input type="text" name="search" placeholder="Pesquisar">
- 			<span class="input-group-btn">
- 				<a class="btn btn-default btn-sm" href="#"><i class="fa fa-search"></i></a>
- 			</span>
-		</div></li>
-		</ul>
-		<h1>UniMap</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4"><h1>UniMap</h1></div>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<input type="text" name="search" placeholder="Pesquisar">
+						<span class="input-group-btn">
+							<a class="btn btn-default btn-sm" href="#"><i class="fa fa-search"></i></a>
+						</span>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<a href="#" class="btn button" role="button" data-toggle="modal" data-target="#loginDiv"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
 	</header>
+	<div class="modal fade" id="loginDiv" data-title="Login">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title"><i class="fa fa-sign-in" aria-hidden="true"></i></span> &nbsp;&nbsp;Login</h4>
+					</div>
+					<form method="POST" action="login.php">
+					<div class="modal-body">
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+						  <input type="text" class="form-control" name="email" placeholder="E-mail" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+						  <input type="password" class="form-control" name="password" placeholder="Senha" aria-describedby="basic-addon1">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+						<input type="submit" class="btn btn-success" value='Entrar'><br>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	<section>
 		<div class="container" id="main">
 			<div class="row">
@@ -30,14 +62,14 @@
 						<div>
 							<div class="biblioteca"><p>Biblioteca</p></div>
 							<div class="fCRoom"><p>Copa</p></div>
-							<div class="fCRoom"><p>Colegiado</p></div>
-							<div class="fCRoom"><p>Colegiado</p></div>
-							<div class="fCRoom"><p>Colegiado de Engenharia da Computação</p></div>
-							<div class="fCRoom"><p>Colegiado de Engenharia Mecânica</p></div>
+							<div class="fCRoom colegiado"><p>Colegiado</p></div>
+							<div class="fCRoom colegiado"><p>Colegiado</p></div>
+							<div class="fCRoom colegiado"><p>Colegiado de Engenharia da Computação</p></div>
+							<div class="fCRoom colegiado"><p>Colegiado de Engenharia Mecânica</p></div>
 							<div class="sCRoom"><p>Copa</p></div>
-							<div class="sCRoom"><p>Colegiado</p></div>
-							<div class="sCRoom"><p>Colegiado</p></div>
-							<div class="sCRoom"><p>Colegiado</p></div>
+							<div class="sCRoom colegiado"><p>Colegiado</p></div>
+							<div class="sCRoom colegiado"><p>Colegiado</p></div>
+							<div class="sCRoom colegiado"><p>Colegiado</p></div>
 						</div>
 						<div class="empty"><p>Banheiro</p></div>
 						<div>
@@ -101,38 +133,38 @@
 					<div class="col-sm-3 sala3">
 						<div>
 							<div class="gRoom"><p>Lab. de armazenamento de produtos agrícolas</p></div>
-							<div class="gRoom"><p>Sala 2</p></div>
-							<div class="gRoom"><p>Sala 3</p></div>
-							<div class="gRoom"><p>Sala 4</p></div>
-							<div class="gRoom"><p>Sala 5</p></div>
-							<div class="gRoom"><p>Sala 6</p></div>
-							<div class="gRoom"><p>Sala 7</p></div>
-							<div class="gRoom"><p>Sala 8</p></div>
-							<div class="gRoom"><p>Sala 9</p></div>
-							<div class="fRoom"><p>Sala 10</p></div>
-							<div class="fRoom"><p>Sala 11</p></div>
-							<div class="fRoom"><p>Sala 12</p></div>
-							<div class="fRoom"><p>Sala 13</p></div>
-							<div class="fRoom"><p>Sala 14</p></div>
-							<div class="fRoom"><p>Sala 15</p></div>
-							<div class="fRoom"><p>Sala 16</p></div>
-							<div class="fRoom"><p>Sala 17</p></div>
-							<div class="fRoom"><p>Sala 18</p></div>
-							<div class="sRoom"><p>Sala 19</p></div>
-							<div class="sRoom"><p>Sala 20</p></div>
-							<div class="sRoom"><p>Sala 21</p></div>
-							<div class="sRoom"><p>Sala 22</p></div>
-							<div class="sRoom"><p>Sala 23</p></div>
-							<div class="sRoom"><p>Sala 24</p></div>
-							<div class="sRoom"><p>Sala 25</p></div>
-							<div class="sRoom"><p>Sala 26</p></div>
-							<div class="sRoom"><p>Sala 27</p></div>
+							<div class="gRoom aula"><p>Sala 2</p></div>
+							<div class="gRoom aula"><p>Sala 3</p></div>
+							<div class="gRoom aula"><p>Sala 4</p></div>
+							<div class="gRoom aula"><p>Sala 5</p></div>
+							<div class="gRoom aula"><p>Sala 6</p></div>
+							<div class="gRoom aula"><p>Sala 7</p></div>
+							<div class="gRoom aula"><p>Sala 8</p></div>
+							<div class="gRoom aula"><p>Sala 9</p></div>
+							<div class="fRoom aula"><p>Sala 10</p></div>
+							<div class="fRoom aula"><p>Sala 11</p></div>
+							<div class="fRoom aula"><p>Sala 12</p></div>
+							<div class="fRoom aula"><p>Sala 13</p></div>
+							<div class="fRoom aula"><p>Sala 14</p></div>
+							<div class="fRoom aula"><p>Sala 15</p></div>
+							<div class="fRoom aula"><p>Sala 16</p></div>
+							<div class="fRoom aula"><p>Sala 17</p></div>
+							<div class="fRoom aula"><p>Sala 18</p></div>
+							<div class="sRoom aula"><p>Sala 19</p></div>
+							<div class="sRoom aula"><p>Sala 20</p></div>
+							<div class="sRoom aula"><p>Sala 21</p></div>
+							<div class="sRoom aula"><p>Sala 22</p></div>
+							<div class="sRoom aula"><p>Sala 23</p></div>
+							<div class="sRoom aula"><p>Sala 24</p></div>
+							<div class="sRoom aula"><p>Sala 25</p></div>
+							<div class="sRoom aula"><p>Sala 26</p></div>
+							<div class="sRoom aula"><p>Sala 27</p></div>
 						</div>
 						<div class="empty"><p>Banheiro</p></div>
 						<div>
 							<div class="gFacility"><p>DCE</p></div>
-							<div class="fCornerRoom "><p>Sala 28</p></div>
-							<div class="sCornerRoom "><p>Sala 29</p></div>
+							<div class="fCornerRoom sala"><p>Sala 28</p></div>
+							<div class="sCornerRoom sala"><p>Sala 29</p></div>
 						</div>
 					</div> <!-- Lado esquerdo -->
 					<div class="col-sm-6" id="middle">
@@ -162,9 +194,9 @@
 							<div class="fRoom8"><p>Lab. de Expressão Gráfica 02</p></div>
 							<div class="fRoom8"><p>Lab. de Computação 01</p></div>
 							<div class="fRoom8"><p>Lab. de Computação 02</p></div>
-							<div class="fRoom8"><p>Sala 31</p></div>
+							<div class="fRoom8 sala"><p>Sala 31</p></div>
 							<div class="fRoom8"><p>Lab. de Meteorologia</p></div>
-							<div class="fRoom8"><p>Sala 30</p></div>
+							<div class="fRoom8 sala"><p>Sala 30</p></div>
 							<div class="sRoom6"><p>Lab. de Física Experimental 2</p></div>
 							<div class="sRoom6"><p>Lab. de Física Experimental 1</p></div>
 							<div class="sRoom6"><p></p></div>
@@ -191,6 +223,8 @@
 				</div>
 			</div>
 		</div>
+
+
 
 		<div id="myCarousel" class="carousel slide hidden-md hidden-lg hidden-xl" data-ride="carousel" data-interval="false">
 
@@ -279,32 +313,32 @@
 					<div class="col-sm-3 sala3">
 						<div>
 							<div class="gRoom"><p>Lab. de armazenamento de produtos agrícolas</p></div>
-							<div class="gRoom"><p>Sala 2</p></div>
-							<div class="gRoom"><p>Sala 3</p></div>
-							<div class="gRoom"><p>Sala 4</p></div>
-							<div class="gRoom"><p>Sala 5</p></div>
-							<div class="gRoom"><p>Sala 6</p></div>
-							<div class="gRoom"><p>Sala 7</p></div>
-							<div class="gRoom"><p>Sala 8</p></div>
-							<div class="gRoom"><p>Sala 9</p></div>
-							<div class="fRoom"><p>Sala 10</p></div>
-							<div class="fRoom"><p>Sala 11</p></div>
-							<div class="fRoom"><p>Sala 12</p></div>
-							<div class="fRoom"><p>Sala 13</p></div>
-							<div class="fRoom"><p>Sala 14</p></div>
-							<div class="fRoom"><p>Sala 15</p></div>
-							<div class="fRoom"><p>Sala 16</p></div>
-							<div class="fRoom"><p>Sala 17</p></div>
-							<div class="fRoom"><p>Sala 18</p></div>
-							<div class="sRoom"><p>Sala 19</p></div>
-							<div class="sRoom"><p>Sala 20</p></div>
-							<div class="sRoom"><p>Sala 21</p></div>
-							<div class="sRoom"><p>Sala 22</p></div>
-							<div class="sRoom"><p>Sala 23</p></div>
-							<div class="sRoom"><p>Sala 24</p></div>
-							<div class="sRoom"><p>Sala 25</p></div>
-							<div class="sRoom"><p>Sala 26</p></div>
-							<div class="sRoom"><p>Sala 27</p></div>
+							<div class="gRoom aulaR"><p>Sala 2</p></div>
+							<div class="gRoom aulaR"><p>Sala 3</p></div>
+							<div class="gRoom aulaR"><p>Sala 4</p></div>
+							<div class="gRoom aulaR"><p>Sala 5</p></div>
+							<div class="gRoom aulaR"><p>Sala 6</p></div>
+							<div class="gRoom aulaR"><p>Sala 7</p></div>
+							<div class="gRoom aulaR"><p>Sala 8</p></div>
+							<div class="gRoom aulaR"><p>Sala 9</p></div>
+							<div class="fRoom aulaR"><p>Sala 10</p></div>
+							<div class="fRoom aulaR"><p>Sala 11</p></div>
+							<div class="fRoom aulaR"><p>Sala 12</p></div>
+							<div class="fRoom aulaR"><p>Sala 13</p></div>
+							<div class="fRoom aulaR"><p>Sala 14</p></div>
+							<div class="fRoom aulaR"><p>Sala 15</p></div>
+							<div class="fRoom aulaR"><p>Sala 16</p></div>
+							<div class="fRoom aulaR"><p>Sala 17</p></div>
+							<div class="fRoom aulaR"><p>Sala 18</p></div>
+							<div class="sRoom aulaR"><p>Sala 19</p></div>
+							<div class="sRoom aulaR"><p>Sala 20</p></div>
+							<div class="sRoom aulaR"><p>Sala 21</p></div>
+							<div class="sRoom aulaR"><p>Sala 22</p></div>
+							<div class="sRoom aulaR"><p>Sala 23</p></div>
+							<div class="sRoom aulaR"><p>Sala 24</p></div>
+							<div class="sRoom aulaR"><p>Sala 25</p></div>
+							<div class="sRoom aulaR"><p>Sala 26</p></div>
+							<div class="sRoom aulaR"><p>Sala 27</p></div>
 						</div>
 						<div class="empty"><p>Banheiro</p></div>
 						<div>

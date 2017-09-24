@@ -1,10 +1,22 @@
 $(document).ready(function(){
 	$.mobile.loading().hide();
-	var json = JSON.parse('["usedroom", "usedroom", "emptyroom" ]');
+	var json = JSON.parse('["usedroom", "usedroom", "emptyroom", "emptyroom", "usedroom", "emptyroom", "usedroom", "usedroom", "emptyroom", "emptyroom", "usedroom", "emptyroom" ]');
 	var j;
 	$(".groundli").addClass("disabled");
 
 	Hide(0);
+
+	var ID = 0;
+	var IDR = 0;
+	$('.aula').each(function() {
+    	$(this).addClass(json[ID]);
+    	ID++;
+	});
+	
+	$('.aulaR').each(function() {
+    	$(this).addClass(json[IDR]);
+    	IDR++;
+	});
 	$(".one").click(function(){
 		$(".oneli").addClass("disabled");
 		$(".groundli, .twoli").removeClass("disabled");

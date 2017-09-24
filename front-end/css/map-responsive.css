@@ -1,5 +1,11 @@
 @media only screen and (min-device-width: 320px) 
   and (max-device-width: 736px){
+  	header .input-group{
+  		right: 0;
+  	}
+  	header .button{
+  		left: 230px;
+  	}
   	section{
   		height: 2000px;
   	}
