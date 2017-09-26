@@ -32,7 +32,7 @@ header .input-group {
     text-align: center;
     position: relative;
     top: 35px;
-    right: 20px;
+    
 }
 header .input-group input {
 	width: 100%;
@@ -47,7 +47,7 @@ header .button{
 	text-align: right;
     position: relative;
     top: 35px;
-    left: 325px;
+    left: 85%;
     background: transparent;
     border: none;
     color: white;

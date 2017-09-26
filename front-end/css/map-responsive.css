@@ -2,10 +2,21 @@
   and (max-device-width: 736px){
   	header .input-group{
   		right: 0;
+  		width: 125%;
+  		top: 30px;
   	}
-  	header .button{
-  		left: 230px;
-  	}
+  	header .input-group input {
+    width: 100%;
+    height: 44px;
+	}
+	.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    height: 44px;
+	}
+  	header .button {
+    	top: 20px;
+    	left: 77%;
+   		font-size: 30px;
+	}
   	section{
   		height: 2000px;
   	}
@@ -70,5 +81,6 @@
 
 	.pagination-lg>li>a{
 		font-size: 45px;
+		width: 65px;
 	}
 }
