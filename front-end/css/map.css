@@ -190,4 +190,17 @@ p{
 	color: #ecf0f1;
 	text-align: center;
 }
-
+#modalAula .modal-dialog{
+	width: 70%;
+}
+#modalAula .table{
+	margin: auto;
+	width: 77%;
+}
+#modalColegiado .container{
+	width: 100%;
+}
+#modalColegiado p{
+	color: black;
+	text-align: left;
+}

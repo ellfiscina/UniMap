@@ -4,7 +4,7 @@ $(document).ready(function(){
 	var j;
 	$(".groundli").addClass("disabled");
 
-	Hide(0);
+	showRoom(0);
 
 	var ID = 0;
 	var IDR = 0;
@@ -20,98 +20,20 @@ $(document).ready(function(){
 	$(".one").click(function(){
 		$(".oneli").addClass("disabled");
 		$(".groundli, .twoli").removeClass("disabled");
-		Hide(1);
-		/*$(".room").hide();
-		$(".gRoom").hide();
-		$(".gEmpty").hide();
-		$(".empty").hide();
-		$(".facility").hide();
-		$(".biblioteca").hide();
-		$(".lab").hide();
-
-		for (var i = 0; i < 38; i++) {
-			j = i+1;
-			if (i < 6) {
-				if(i == 4){
-					$('.sala1').append('<div class="empty"><p>Banheiro</p></div>');
-				}
-				else{
-					$('.sala1').append('<div class="room '+json[i]+'"><p>'+ j +'</p></div>');
-				}
-			} 
-			else if(i < 17){
-				if(i == 15){
-					$('.sala2').append('<div class="empty"><p>Escada</p></div>');
-				}
-				else{
-					$('.sala2').append('<div class="room '+json[i]+'"><p>'+ j +'</p></div>');
-				}
-			}
-			else if(i < 28){
-				if(i == 26){
-					$('.sala3').append('<div class="empty"><p>Banheiro</p></div>');
-				}
-				else{
-					$('.sala3').append('<div class="room '+json[i]+'"><p>'+ j +'</p></div>');
-				}
-			}
-			else{
-				if(i == 36){
-					$('.sala4').append('<div class="empty"><p>Escada</p></div>');
-				}
-				else{
-					$('.sala4').append('<div class="room '+json[i]+'"><p>'+ j +'</p></div>');
-				}
-			}
-		}*/
+		showRoom(1);
 	});
 	$(".two").click(function(){
 		$(".twoli").addClass("disabled");
 		$(".groundli, .oneli").removeClass("disabled");
-		Hide(2);
-		/*for (var i = 0; i < 32; i++) {
-			if (i < 5) {
-				if(i == 3){
-					$('.sala1').append('<div class="empty"><p>Banheiro</p></div>');
-				}
-				else{
-					$('.sala1').append('<div class="room '+json[i]+'"><p>'+ j +'</p></div>');
-				}
-			} 
-			else if(i < 13){
-				if(i == 11){
-					$('.sala2').append('<div class="empty"><p>Escada</p></div>');
-				}
-				else{
-					$('.sala2').append('<div class="room '+json[i]+'"><p>'+ j +'</p></div>');
-				}
-			}
-			else if(i < 24){
-				if(i == 22){
-					$('.sala3').append('<div class="empty"><p>Banheiro</p></div>');
-				}
-				else{
-					$('.sala3').append('<div class="room '+json[i]+'"><p>'+ j +'</p></div>');
-				}
-			}
-			else{
-				if(i == 30){
-					$('.sala4').append('<div class="empty"><p>Escada</p></div>');
-				}
-				else{
-					$('.sala4').append('<div class="room '+json[i]+'"><p>'+ j +'</p></div>');
-				}
-			}
-			j++;
-		}*/
+		showRoom(2);
 	});
 	$(".ground").click(function(){
 		$(".groundli").addClass("disabled");
 		$(".twoli, .oneli").removeClass("disabled");
-		Hide(0);
+		showRoom(0);
 	});
 
-	function Hide(andar) {
+	function showRoom(andar) {
 		$(".gRoom").hide();
 		$(".biblioteca").hide();
 		$(".gFacility").hide();
