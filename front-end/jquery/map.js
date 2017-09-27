@@ -2,6 +2,22 @@ $(document).ready(function(){
 	$.mobile.loading().hide();
 	var json = JSON.parse('["usedroom", "usedroom", "emptyroom", "emptyroom", "usedroom", "emptyroom", "usedroom", "usedroom", "emptyroom", "emptyroom", "usedroom", "emptyroom" ]');
 	var j;
+	var colegiado = [{
+		nome: "Colegiado de Computacao",
+		coordenador: "Max",
+		vice: "Ana Emilia", 
+		email: "ccomp@univasf.edu.br", 
+		site: "univasf.edu.br/~ccomp",
+		tel: "123456" 
+		},{
+		nome: "Colegiado de Mecânica",
+		coordenador: "X",
+		vice: "Y", 
+		email: "cm@univasf.edu.br", 
+		site: "univasf.edu.br/~cm",
+		tel: "654321" 
+		}];
+
 	$(".groundli").addClass("disabled");
 
 	showRoom(0);
@@ -83,5 +99,28 @@ $(document).ready(function(){
     });
    $("#myCarousel").swipeleft(function() {
       $(this).carousel('next');
+   });
+
+   $('.fCRoom').click(function(){
+   		var x = $(this).attr('id');
+   		var html = '<div class="modal-dialog">' +
+						'<div class="modal-content">' +
+							'<div class="modal-header">' +
+								'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+								'<h4 class="modal-title">' + colegiado[x].nome +'</h4>'+
+							'</div>'+
+						'<div class="modal-body">' +
+							'<div class="container">' +
+								'<p>Coordenador: ' + colegiado[x].coordenador +'</p>' +
+								'<p>Vice-coordenador: ' + colegiado[x].vice +'</p>' +
+								'<p>Email: ' + colegiado[x].email +'</p>' +
+								'<p>Site: ' + colegiado[x].site +'</p>' +
+								'<p>Telefone: ' + colegiado[x].tel +'</p>' +
+							'</div>' +
+						'</div>' +
+					'</div>' +
+				'</div>';
+
+		$('#modalColegiado').html(html);
    });
 });
