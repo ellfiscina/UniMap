@@ -90,7 +90,7 @@ section #main{
 
 .gRoom, .room,.fRoom, .sRoom,
 .fCornerRoom, .sCornerRoom, 
-.fCRoom, .sCRoom, .sRoom6, .lab,
+.fCRoom, .sCRoom, .sRoom5, .sRoom6, .lab,
 .fRoom8, .biblioteca, .empty,
 .gFacility, .fFacility, .sFacility,
 .gSalinha, .fSalinha, .sSalinha{
@@ -114,6 +114,9 @@ section #main{
 .sCRoom{
 	height: 145px;
 }
+.sRoom5{
+	height: 116px;
+} 
 .sRoom6, .lab{
 	height: 96.8px;
 }

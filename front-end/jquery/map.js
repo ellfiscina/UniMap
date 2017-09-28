@@ -62,6 +62,7 @@ $(document).ready(function(){
 		$(".fCRoom").hide();
 		$(".lab").hide();
 		$(".sRoom").hide();
+		$(".sRoom5").hide();
 		$(".sRoom6").hide();
 		$(".sCRoom").hide();
 		$(".fCornerRoom").hide();
@@ -86,6 +87,7 @@ $(document).ready(function(){
 				break;
 			case 2: 
 				$(".sRoom").show();
+				$(".sRoom5").show();
 				$(".sRoom6").show();
 				$(".sCRoom").show();
 				$(".sCornerRoom").show();
@@ -101,7 +103,7 @@ $(document).ready(function(){
       $(this).carousel('next');
    });
 
-   $('.fCRoom').click(function(){
+   $('.colegiado').click(function(){
    		var x = $(this).attr('id');
    		var html = '<div class="modal-dialog">' +
 						'<div class="modal-content">' +
@@ -122,5 +124,61 @@ $(document).ready(function(){
 				'</div>';
 
 		$('#modalColegiado').html(html);
+   });
+
+   $('.aula').click(function(){
+   		var y = $(this).attr('id');
+   		var html = '<div class="modal-dialog">' +
+						'<div class="modal-content">' +
+							'<div class="modal-header">' +
+								'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+								'<h4 class="modal-title">Grade de Horário</h4>' +
+							'</div><div class="modal-body">' +
+								'<div class="container">' +
+									'<div class="table-responsive">' +
+										'<table class="table">' +
+											'<thead><tr>' +
+												'<th>Horário</th><th>Segunda</th><th>Terça</th><th>Quarta</th><th>Quinta</th><th>Sexta</th><th>Sábado</th>' +
+											'</tr></thead>' +
+											'<tbody><tr>' +
+												'<td>07:00</td><td></td><td></td><td></td><td></td><td></td><td></td>' +
+											'</tr><tr>' +
+												'<td>08:00</td>' +
+											'</tr><tr>' +
+												'<td>09:00</td>' +
+											'</tr><tr>' +
+												'<td>10:00</td>' +
+											'</tr><tr>' +
+												'<td>11:00</td>' +
+											'</tr><tr>' +
+												'<td>13:00</td>' +
+											'</tr><tr>' +
+												'<td>14:00</td>' +
+											'</tr><tr>' +
+												'<td>15:00</td>' +
+											'</tr><tr>' +
+												'<td>16:00</td>' +
+											'</tr><tr>' +
+												'<td>17:00</td>' +
+											'</tr><tr>' +
+												'<td>18:00</td>' +
+											'</tr><tr>' +
+												'<td>19:00</td>' +
+											'</tr><tr>' +
+												'<td>20:00</td>' +
+											'</tr><tr>' +
+												'<td>21:00</td>' +
+											'</tr><tr>' +
+												'<td>22:00</td>' +
+											'</tr></tbody>' +
+										'</table>' +
+									'</div>' +
+								'</div>' +
+							'</div>' +
+						'<div class="modal-footer">' +
+							'<button type="button" class="btn btn-primary">Reservar</button>' +
+						'</div></div></div>';
+
+		$('#modalAula').html(html);
    });
 });
