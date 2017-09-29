@@ -78,7 +78,9 @@
 	p{
 		font-size: 23px;
 	}
-
+	.sRoom5 {
+    height: 205px;
+	}
 	.pagination-lg>li>a{
 		font-size: 45px;
 		width: 65px;

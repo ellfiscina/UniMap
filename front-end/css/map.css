@@ -16,6 +16,9 @@ header{
 	height: 100px;
 	background-color: #3498DB;
 }
+header a:hover{
+	text-decoration: none;
+}
 ul{
 	list-style-type: none;
 	display: inline-block;

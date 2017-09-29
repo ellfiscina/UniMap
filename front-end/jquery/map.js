@@ -126,7 +126,7 @@ $(document).ready(function(){
 		$('#modalColegiado').html(html);
    });
 
-   $('.aula').click(function(){
+   $('.aula, .aulaR').click(function(){
    		var y = $(this).attr('id');
    		var html = '<div class="modal-dialog">' +
 						'<div class="modal-content">' +
