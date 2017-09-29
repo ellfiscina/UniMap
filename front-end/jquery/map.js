@@ -19,6 +19,7 @@ $(document).ready(function(){
 		}];
 
 	$(".groundli").addClass("disabled");
+	$('#signed').hide();
 
 	showRoom(0);
 
@@ -181,4 +182,30 @@ $(document).ready(function(){
 
 		$('#modalAula').html(html);
    });
+
+   $('#submit').click(function(){
+   		var valid = true;
+   		validate(valid);
+   });
+
+   function validate(valid){
+   		var attempt = 3;
+   		if(valid){
+   			
+   			$('#signin').hide();
+   			$('#signed').show();
+   			alert("Bem vindo");
+   			
+
+   			return false;
+   		}
+   		else{
+   			attempt--;
+   			if(attempt == 0){
+   				document.getElementById("email").disabled = true;
+   				document.getElementById("password").disabled = true;
+   				document.getElementById("submit").disabled = true;
+   			}
+   		}
+   }
 });

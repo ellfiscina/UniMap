@@ -50,7 +50,7 @@ header .button{
 	text-align: right;
     position: relative;
     top: 35px;
-    left: 85%;
+    left: 75%;
     background: transparent;
     border: none;
     color: white;
@@ -168,10 +168,10 @@ section #main{
     top: 648px;
 }
 .usedroom{
-	background-color: red;
+	background-color: #e74c3c;
 }
 .emptyroom{
-	background-color: green;
+	background-color: #27ae60;
 }
 .leftC, .rightC{
 	background-color: #f4b350;
@@ -209,4 +209,16 @@ p{
 #modalColegiado p{
 	color: black;
 	text-align: left;
+}
+#signed{
+	text-align: right;
+    position: relative;
+    top: 35px;
+	left: 70%;
+	color: white;
+}
+#signed p{
+
+	display: inline-block;
+    padding-right: 15px;
 }
