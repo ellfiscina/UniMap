@@ -5,7 +5,7 @@ spl_autoload_register(function ($class_name) {
 
 	Database::connect("localhost", "root", "", "unimap_teste");
 	$interface = new IFace();
-	$interface->showRoomSchedule(1);	
+	var_dump($interface->showRooms());	
 
 if(isset($_POST["room"])){
 
@@ -26,7 +26,7 @@ if(isset($_POST["room"])){
 	else
 		$data["weekDay"] = $_POST["weekDay"];
 	$result = $user->reserveRoom($data);
-	var_dump($result);
+	echo $result;
 }
 
 ?>
