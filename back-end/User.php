@@ -5,6 +5,7 @@
 */
 class User
 {
+	private $id;
 	private $name;
 	private $cpf;
 	private $email;
@@ -197,6 +198,18 @@ class User
 		if(Database::delete("authorizations", "cpf = \"".$user."\" AND room = ".$room ))
 			return array("cod" => 0, "msg" => "Autorização revogada!");
 		return array("cod" => 2, "msg" => "Ocorreu um erro com o registro, por favor, entre em contato com a administração.");
+	}
+
+	public function validateUser($cpf, $pass){
+		$results = Database::select(array("*"), array("users"), "cpf = \"".$cpf."\" AND password = \"".md5($pass)."\"");
+		if(!$results) return FALSE;
+		$results = $results[0];
+		$this->set("id", $results["id"]);
+		$this->set("name", $results["name"]);
+		$this->set("email", $results["email"]);
+		$this->set("type", $results["type"]);
+		$this->set("cpf", $results["cpf"]);
+		return TRUE;
 	}
 }
 
