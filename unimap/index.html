@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>UniMap</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/map.css">
+	<link rel="stylesheet" type="text/css" href="css/map-responsive.css">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4"><a href="index.html" target="_self"><h1>UniMap</h1></a></div>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<input type="text" name="search" placeholder="Pesquisar">
+						<span class="input-group-btn">
+							<a class="btn btn-default btn-sm" href="search.html" target="_self"><i class="fa fa-search"></i></a>
+						</span>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<a href="#" id="signin" class="btn button" role="button" data-toggle="modal" data-target="#loginDiv"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i></a>
+					<a href="#" id="signed" class="btn button" role="button"><p>User </p><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="modal fade" id="loginDiv" data-title="Login">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title"><i class="fa fa-sign-in" aria-hidden="true"></i></span> &nbsp;&nbsp;Login</h4>
+				</div>
+				<form method="POST" id='loginForm'>
+					<div class="modal-body">
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+						  <input type="text" id="cpf" class="form-control" name="cpf" placeholder="CPF" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+						  <input type="password" id="password" class="form-control" name="pass" placeholder="Senha" aria-describedby="basic-addon1">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+						<button type="button" class="btn btn-warning" data-dismiss="modal">Cadastrar</button>
+						<input type="submit"  class="btn btn-success" value='Entrar'><br>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div> <!-- Login -->
+
+	<section>
+		<div class="container" id="main">
+			<div class="row">
+				<div class="col-sm-5 left hidden-xs hidden-sm">
+					<div class="col-sm-3 sala1">
+						<div>
+							<div class="biblioteca"><p>Biblioteca</p></div>
+							<div class="fCRoom"><p>Copa</p></div>
+							<div class="fCRoom colegiado" id="3" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Ciências Sociais</p></div>
+							<div class="fCRoom colegiado" id="2" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Ciências Sociais</p></div>
+							<div class="fCRoom colegiado" id="1" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia da Computação</p></div>
+							<div class="fCRoom colegiado" id="0" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia Mecânica</p></div>
+							<div class="sCRoom"><p>Copa</p></div>
+							<div class="sCRoom colegiado" id="6" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia de Produção</p></div>
+							<div class="sCRoom colegiado" id="5" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia Elétrica</p></div>
+							<div class="sCRoom colegiado" id="4" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Artes Visuais</p></div>
+						</div>
+						<div class="empty"><p>Banheiro</p></div>
+						<div>
+							<div class="gFacility"><p></p></div>
+							<div class="fCornerRoom"><p>Lab. de Hardware</p></div>
+							<div class="sCornerRoom"><p>Lab. de Computação Gráfica</p></div>
+						</div>
+					</div> <!-- lado esquerdo -->
+					<div class="col-sm-6" id="middle">
+						<div class="rampa"><p>Rampa</p></div>
+						<div>
+							<div class="gFacility"><p></p></div>
+							<div class="fFacility"><p>NUCLI</p></div>
+							<div class="sFacility"><p>PEMD</p></div>
+						</div>
+						<div class="nothing"></div>
+						<div>
+							<div class="gSalinha"></div>
+							<div class="fSalinha"></div>
+							<div class="sSalinha"></div>
+						</div>
+						<div></div>
+					</div> <!-- Meio -->
+					<div class="col-sm-3 sala2">
+						<div>
+							<div class="gRoom"><p>Fábrica de Software</p></div>
+							<div class="gRoom"><p>Lab. de Redes</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab. de Robótica</p></div>
+							<div class="gRoom"><p>Lab. de Banco de Dados</p></div>
+							<div class="gRoom"><p>Lab. de Programação Avançada</p></div>
+							<div class="gRoom"><p>Lab. de Programação Básica</p></div>
+							<div class="fRoom aula" id="39" data-toggle="modal" data-target="#modalAula"><p>Sala 41</p></div>
+							<div class="fRoom aula" id="38" data-toggle="modal" data-target="#modalAula"><p>Sala 40</p></div>
+							<div class="fRoom aula" id="37" data-toggle="modal" data-target="#modalAula"><p>Sala 39</p></div>
+							<div class="fRoom aula" id="36" data-toggle="modal" data-target="#modalAula"><p>Sala 38</p></div>
+							<div class="fRoom aula" id="35" data-toggle="modal" data-target="#modalAula"><p>Sala 37</p></div>
+							<div class="fRoom aula" id="34" data-toggle="modal" data-target="#modalAula"><p>Sala 36</p></div>
+							<div class="fRoom aula" id="33" data-toggle="modal" data-target="#modalAula"><p>Sala 35</p></div>
+							<div class="fRoom aula" id="32" data-toggle="modal" data-target="#modalAula"><p>Sala 34</p></div>
+							<div class="fRoom aula" id="31" data-toggle="modal" data-target="#modalAula"><p>Sala 33</p></div>
+							<div class="sRoom5"><p>AIESEC</p></div>
+							<div class="sRoom5 colegiado" id="8" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia Civil</p></div>
+							<div class="sRoom5 colegiado" id="7" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia Ambiental e Agrícola</p></div>
+							<div class="sRoom5"><p>Sala Verde</p></div>
+							<div class="sRoom5"><p></p></div>
+						</div>
+						<div class="empty"><p>Escada</p></div>
+						<div>
+							<div class="gFacility"><p>SIC</p></div>
+							<div class="fCornerRoom aula" id="30" data-toggle="modal" data-target="#modalAula"><p>Sala 32</p></div>
+							<div class="sCornerRoom"><p>LAPIS</p></div>
+						</div>	
+					</div> <!--Lado direito-->
+				</div> <!-- Predio do colegiado -->
+
+				<div class="col-sm-5 right hidden-xs hidden-sm">
+					<div class="col-sm-3 sala3">
+						<div>
+							<div class="gRoom"><p>Lab. de armazenamento de produtos agrícolas</p></div>
+							<div class="gRoom aula" id="0" data-toggle="modal" data-target="#modalAula"><p>Sala 2</p></div>
+							<div class="gRoom aula" id="1" data-toggle="modal" data-target="#modalAula"><p>Sala 3</p></div>
+							<div class="gRoom aula" id="2" data-toggle="modal" data-target="#modalAula"><p>Sala 4</p></div>
+							<div class="gRoom aula" id="3" data-toggle="modal" data-target="#modalAula"><p>Sala 5</p></div>
+							<div class="gRoom aula" id="4" data-toggle="modal" data-target="#modalAula"><p>Sala 6</p></div>
+							<div class="gRoom aula" id="5" data-toggle="modal" data-target="#modalAula"><p>Sala 7</p></div>
+							<div class="gRoom aula" id="6" data-toggle="modal" data-target="#modalAula"><p>Sala 8</p></div>
+							<div class="gRoom aula" id="7" data-toggle="modal" data-target="#modalAula"><p>Sala 9</p></div>
+							<div class="fRoom aula" id="8" data-toggle="modal" data-target="#modalAula"><p>Sala 10</p></div>
+							<div class="fRoom aula" id="9" data-toggle="modal" data-target="#modalAula"><p>Sala 11</p></div>
+							<div class="fRoom aula" id="10" data-toggle="modal" data-target="#modalAula"><p>Sala 12</p></div>
+							<div class="fRoom aula" id="11" data-toggle="modal" data-target="#modalAula"><p>Sala 13</p></div>
+							<div class="fRoom aula" id="12" data-toggle="modal" data-target="#modalAula"><p>Sala 14</p></div>
+							<div class="fRoom aula" id="13" data-toggle="modal" data-target="#modalAula"><p>Sala 15</p></div>
+							<div class="fRoom aula" id="14" data-toggle="modal" data-target="#modalAula"><p>Sala 16</p></div>
+							<div class="fRoom aula" id="15" data-toggle="modal" data-target="#modalAula"><p>Sala 17</p></div>
+							<div class="fRoom aula" id="16" data-toggle="modal" data-target="#modalAula"><p>Sala 18</p></div>
+							<div class="sRoom aula" id="17" data-toggle="modal" data-target="#modalAula"><p>Sala 19</p></div>
+							<div class="sRoom aula" id="18" data-toggle="modal" data-target="#modalAula"><p>Sala 20</p></div>
+							<div class="sRoom aula" id="19" data-toggle="modal" data-target="#modalAula"><p>Sala 21</p></div>
+							<div class="sRoom aula" id="20" data-toggle="modal" data-target="#modalAula"><p>Sala 22</p></div>
+							<div class="sRoom aula" id="21" data-toggle="modal" data-target="#modalAula"><p>Sala 23</p></div>
+							<div class="sRoom aula" id="22" data-toggle="modal" data-target="#modalAula"><p>Sala 24</p></div>
+							<div class="sRoom aula" id="23" data-toggle="modal" data-target="#modalAula"><p>Sala 25</p></div>
+							<div class="sRoom aula" id="24" data-toggle="modal" data-target="#modalAula"><p>Sala 26</p></div>
+							<div class="sRoom aula" id="25" data-toggle="modal" data-target="#modalAula"><p>Sala 27</p></div>
+						</div>
+						<div class="empty"><p>Banheiro</p></div>
+						<div>
+							<div class="gFacility"><p>DCE</p></div>
+							<div class="fCornerRoom sala" id="26" data-toggle="modal" data-target="#modalAula"><p>Sala 28</p></div>
+							<div class="sCornerRoom sala" id="27" data-toggle="modal" data-target="#modalAula"><p>Sala 29</p></div>
+						</div>
+					</div> <!-- Lado esquerdo -->
+					<div class="col-sm-6" id="middle">
+						<div class="rampa"><p>Rampa</p></div>
+						<div>
+							<div class="gFacility"><p>Cantina</p></div>
+							<div class="fFacility"><p>Lab. de Engenharia Ambiental</p></div>
+							<div class="sFacility"><p>Lab. de Produção</p></div>
+						</div>
+						<div class="nothing"></div>
+						<div>
+							<div class="gSalinha"></div>
+							<div class="fSalinha"></div>
+							<div class="sSalinha"></div>
+						</div>
+					</div> <!-- Meio -->
+					<div class="col-sm-3 sala4">
+						<div>
+							<div class="lab"><p></p></div>
+							<div class="lab"><p>Lab de Citologia/Fisiologia Vegetal</p></div>
+							<div class="lab"><p>Lab. de Microscopia</p></div>
+							<div class="lab"><p>Lab. de Química dos Solos</p></div>
+							<div class="lab"><p>Lab. de Química Orgânica/Bioquímica Vegetal</p></div>
+							<div class="lab"><p>Lab. de Química</p></div>
+							<div class="fRoom8"><p>NUMEA</p></div>
+							<div class="fRoom8"><p>Lab. de Expressão Gráfica 01</p></div>
+							<div class="fRoom8"><p>Lab. de Expressão Gráfica 02</p></div>
+							<div class="fRoom8"><p>Lab. de Computação 01</p></div>
+							<div class="fRoom8"><p>Lab. de Computação 02</p></div>
+							<div class="fRoom8 sala" id="29" data-toggle="modal" data-target="#modalAula"><p>Sala 31</p></div>
+							<div class="fRoom8"><p>Lab. de Meteorologia</p></div>
+							<div class="fRoom8 sala" id="28" data-toggle="modal" data-target="#modalAula"><p>Sala 30</p></div>
+							<div class="sRoom6"><p>Lab. de Física Experimental 2</p></div>
+							<div class="sRoom6"><p>Lab. de Física Experimental 1</p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p>Lab. de Eletrônica Analógica</p></div>
+						</div>
+						<div class="empty"><p>Escada</p></div>
+						<div>
+							<div class="gFacility"><p>Xerox</p></div>
+							<div class="fCornerRoom"><p>Simulação e Prática Empresarial</p></div>
+							<div class="sCornerRoom"><p>Lab. de Instalações Elétricas</p></div>
+						</div>
+					</div> <!-- Lado direito -->
+				</div> <!-- Predio de aula -->
+				<div class="col-sm-1 hidden-xs hidden-sm" id="nav">
+					<nav>
+						<ul class="pagination pagination-lg">
+							<li class="twoli"><a class="two" href="#">2</a></li>
+							<li class="oneli"><a class="one" href="#">1</a></li>
+							<li class="groundli"><a class="ground" href="#">T</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div id="myCarousel" class="carousel slide hidden-md hidden-lg hidden-xl" data-ride="carousel" data-interval="false">
+
+			<ol class="carousel-indicators">
+     			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      			<li data-target="#myCarousel" data-slide-to="1"></li>
+      		</ol>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" >
+				<div class="item active">
+					<div class="col-sm-5 leftC">
+					<div class="col-sm-3 sala1">
+						<div>
+							<div class="biblioteca"><p>Biblioteca</p></div>
+							<div class="fCRoom"><p>Copa</p></div>
+							<div class="fCRoom colegiado" id="3" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Ciências Sociais</p></div>
+							<div class="fCRoom colegiado" id="2" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Ciências Sociais</p></div>
+							<div class="fCRoom colegiado" id="1" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia da Computação</p></div>
+							<div class="fCRoom colegiado" id="0" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia Mecânica</p></div>
+							<div class="sCRoom"><p>Copa</p></div>
+							<div class="sCRoom colegiado" id="6" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia de Produção</p></div>
+							<div class="sCRoom colegiado" id="5" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia Elétrica</p></div>
+							<div class="sCRoom colegiado" id="4" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Artes Visuais</p></div>
+						</div>
+						<div class="empty"><p>Banheiro</p></div>
+						<div>
+							<div class="gFacility"><p></p></div>
+							<div class="fCornerRoom"><p>Lab. de Hardware</p></div>
+							<div class="sCornerRoom"><p>Lab. de Computação Gráfica</p></div>
+						</div>
+					</div> <!-- lado esquerdo -->
+					<div class="col-sm-6" id="middle">
+						<div class="rampa"><p>Rampa</p></div>
+						<div>
+							<div class="gFacility"><p></p></div>
+							<div class="fFacility"><p>NUCLI</p></div>
+							<div class="sFacility"><p>PEMD</p></div>
+						</div>
+						<div class="nothing"></div>
+						<div>
+							<div class="gSalinha"></div>
+							<div class="fSalinha"></div>
+							<div class="sSalinha"></div>
+						</div>
+						<div></div>
+					</div> <!-- Meio -->
+					<div class="col-sm-3 sala2">
+						<div>
+							<div class="gRoom"><p>Fábrica de Software</p></div>
+							<div class="gRoom"><p>Lab. de Redes</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab.</p></div>
+							<div class="gRoom"><p>Lab. de Robótica</p></div>
+							<div class="gRoom"><p>Lab. de Banco de Dados</p></div>
+							<div class="gRoom"><p>Lab. de Programação Avançada</p></div>
+							<div class="gRoom"><p>Lab. de Programação Básica</p></div>
+							<div class="fRoom aula" id="39" data-toggle="modal" data-target="#modalAula"><p>Sala 41</p></div>
+							<div class="fRoom aula" id="38" data-toggle="modal" data-target="#modalAula"><p>Sala 40</p></div>
+							<div class="fRoom aula" id="37" data-toggle="modal" data-target="#modalAula"><p>Sala 39</p></div>
+							<div class="fRoom aula" id="36" data-toggle="modal" data-target="#modalAula"><p>Sala 38</p></div>
+							<div class="fRoom aula" id="35" data-toggle="modal" data-target="#modalAula"><p>Sala 37</p></div>
+							<div class="fRoom aula" id="34" data-toggle="modal" data-target="#modalAula"><p>Sala 36</p></div>
+							<div class="fRoom aula" id="33" data-toggle="modal" data-target="#modalAula"><p>Sala 35</p></div>
+							<div class="fRoom aula" id="32" data-toggle="modal" data-target="#modalAula"><p>Sala 34</p></div>
+							<div class="fRoom aula" id="31" data-toggle="modal" data-target="#modalAula"><p>Sala 33</p></div>
+							<div class="sRoom5"><p>AIESEC</p></div>
+							<div class="sRoom5 colegiado" id="8" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia Civil</p></div>
+							<div class="sRoom5 colegiado" id="7" data-toggle="modal" data-target="#modalColegiado"><p>Colegiado de Engenharia Ambiental e Agrícola</p></div>
+							<div class="sRoom5"><p>Sala Verde</p></div>
+							<div class="sRoom5"><p></p></div>
+						</div>
+						<div class="empty"><p>Escada</p></div>
+						<div>
+							<div class="gFacility"><p>SIC</p></div>
+							<div class="fCornerRoom aula" id="30" data-toggle="modal" data-target="#modalAula"><p>Sala 32</p></div>
+							<div class="sCornerRoom"><p>LAPIS</p></div>
+						</div>	
+					</div> <!--Lado direito-->
+				</div> <!-- Predio do colegiado -->
+				</div>
+
+				<div class="item">
+					<div class="col-sm-5 rightC">
+					<div class="col-sm-3 sala3">
+						<div>
+							<div class="gRoom"><p>Lab. de armazenamento de produtos agrícolas</p></div>
+							<div class="gRoom aula" id="0" data-toggle="modal" data-target="#modalAula"><p>Sala 2</p></div>
+							<div class="gRoom aula" id="1" data-toggle="modal" data-target="#modalAula"><p>Sala 3</p></div>
+							<div class="gRoom aula" id="2" data-toggle="modal" data-target="#modalAula"><p>Sala 4</p></div>
+							<div class="gRoom aula" id="3" data-toggle="modal" data-target="#modalAula"><p>Sala 5</p></div>
+							<div class="gRoom aula" id="4" data-toggle="modal" data-target="#modalAula"><p>Sala 6</p></div>
+							<div class="gRoom aula" id="5" data-toggle="modal" data-target="#modalAula"><p>Sala 7</p></div>
+							<div class="gRoom aula" id="6" data-toggle="modal" data-target="#modalAula"><p>Sala 8</p></div>
+							<div class="gRoom aula" id="7" data-toggle="modal" data-target="#modalAula"><p>Sala 9</p></div>
+							<div class="fRoom aula" id="8" data-toggle="modal" data-target="#modalAula"><p>Sala 10</p></div>
+							<div class="fRoom aula" id="9" data-toggle="modal" data-target="#modalAula"><p>Sala 11</p></div>
+							<div class="fRoom aula" id="10" data-toggle="modal" data-target="#modalAula"><p>Sala 12</p></div>
+							<div class="fRoom aula" id="11" data-toggle="modal" data-target="#modalAula"><p>Sala 13</p></div>
+							<div class="fRoom aula" id="12" data-toggle="modal" data-target="#modalAula"><p>Sala 14</p></div>
+							<div class="fRoom aula" id="13" data-toggle="modal" data-target="#modalAula"><p>Sala 15</p></div>
+							<div class="fRoom aula" id="14" data-toggle="modal" data-target="#modalAula"><p>Sala 16</p></div>
+							<div class="fRoom aula" id="15" data-toggle="modal" data-target="#modalAula"><p>Sala 17</p></div>
+							<div class="fRoom aula" id="16" data-toggle="modal" data-target="#modalAula"><p>Sala 18</p></div>
+							<div class="sRoom aula" id="17" data-toggle="modal" data-target="#modalAula"><p>Sala 19</p></div>
+							<div class="sRoom aula" id="18" data-toggle="modal" data-target="#modalAula"><p>Sala 20</p></div>
+							<div class="sRoom aula" id="19" data-toggle="modal" data-target="#modalAula"><p>Sala 21</p></div>
+							<div class="sRoom aula" id="20" data-toggle="modal" data-target="#modalAula"><p>Sala 22</p></div>
+							<div class="sRoom aula" id="21" data-toggle="modal" data-target="#modalAula"><p>Sala 23</p></div>
+							<div class="sRoom aula" id="22" data-toggle="modal" data-target="#modalAula"><p>Sala 24</p></div>
+							<div class="sRoom aula" id="23" data-toggle="modal" data-target="#modalAula"><p>Sala 25</p></div>
+							<div class="sRoom aula" id="24" data-toggle="modal" data-target="#modalAula"><p>Sala 26</p></div>
+							<div class="sRoom aula" id="25" data-toggle="modal" data-target="#modalAula"><p>Sala 27</p></div>
+						</div>
+						<div class="empty"><p>Banheiro</p></div>
+						<div>
+							<div class="gFacility"><p>DCE</p></div>
+							<div class="fCornerRoom sala" id="26" data-toggle="modal" data-target="#modalAula"><p>Sala 28</p></div>
+							<div class="sCornerRoom sala" id="27" data-toggle="modal" data-target="#modalAula"><p>Sala 29</p></div>
+						</div>
+					</div> <!-- Lado esquerdo -->
+					<div class="col-sm-6" id="middle">
+						<div class="rampa"><p>Rampa</p></div>
+						<div>
+							<div class="gFacility"><p>Cantina</p></div>
+							<div class="fFacility"><p>Lab. de Engenharia Ambiental</p></div>
+							<div class="sFacility"><p>Lab. de Produção</p></div>
+						</div>
+						<div class="nothing"></div>
+						<div>
+							<div class="gSalinha"></div>
+							<div class="fSalinha"></div>
+							<div class="sSalinha"></div>
+						</div>
+					</div> <!-- Meio -->
+					<div class="col-sm-3 sala4">
+						<div>
+							<div class="lab"><p></p></div>
+							<div class="lab"><p>Lab de Citologia/Fisiologia Vegetal</p></div>
+							<div class="lab"><p>Lab. de Microscopia</p></div>
+							<div class="lab"><p>Lab. de Química dos Solos</p></div>
+							<div class="lab"><p>Lab. de Química Orgânica/Bioquímica Vegetal</p></div>
+							<div class="lab"><p>Lab. de Química</p></div>
+							<div class="fRoom8"><p>NUMEA</p></div>
+							<div class="fRoom8"><p>Lab. de Expressão Gráfica 01</p></div>
+							<div class="fRoom8"><p>Lab. de Expressão Gráfica 02</p></div>
+							<div class="fRoom8"><p>Lab. de Computação 01</p></div>
+							<div class="fRoom8"><p>Lab. de Computação 02</p></div>
+							<div class="fRoom8 sala" id="29" data-toggle="modal" data-target="#modalAula"><p>Sala 31</p></div>
+							<div class="fRoom8"><p>Lab. de Meteorologia</p></div>
+							<div class="fRoom8 sala" id="28" data-toggle="modal" data-target="#modalAula"><p>Sala 30</p></div>
+							<div class="sRoom6"><p>Lab. de Física Experimental 2</p></div>
+							<div class="sRoom6"><p>Lab. de Física Experimental 1</p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p></p></div>
+							<div class="sRoom6"><p>Lab. de Eletrônica Analógica</p></div>
+						</div>
+						<div class="empty"><p>Escada</p></div>
+						<div>
+							<div class="gFacility"><p>Xerox</p></div>
+							<div class="fCornerRoom"><p>Simulação e Prática Empresarial</p></div>
+							<div class="sCornerRoom"><p>Lab. de Instalações Elétricas</p></div>
+						</div>
+					</div> <!-- Lado direito -->
+				</div> <!-- Predio de aula -->
+				</div>
+
+				<div class="col-sm-1" id="nav">
+					<nav>
+						<ul class="pagination pagination-lg">
+							<li class="twoli"><a class="two" href="#">2</a></li>
+							<li class="oneli"><a class="one" href="#">1</a></li>
+							<li class="groundli"><a class="ground" href="#">T</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div> <!-- carousel -->
+	</section>
+
+	<div id="modalAula" class="modal fade" role="dialog"></div>
+	<div id="modalColegiado" class="modal fade" role="dialog"></div>
+	<footer></footer>
+</body>
+	<script type="text/javascript" src="jquery/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="jquery/map.js"></script>
+
+</html>
