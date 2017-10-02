@@ -1,11 +1,12 @@
 <?php
+session_start();
 spl_autoload_register(function ($class_name) {
 	    include $class_name . '.php';
 	});
 
 	Database::connect("localhost", "root", "", "unimap_teste");
 	$interface = new IFace();
-	var_dump($interface->showRooms());	
+	echo $interface->showSessionInfo();	
 
 if(isset($_POST["room"])){
 
@@ -13,7 +14,7 @@ if(isset($_POST["room"])){
 	    include $class_name . '.php';
 	});
 
-	Database::connect("localhost", "root", "", "unimap_teste");
+	//Database::connect("localhost", "root", "", "unimap_teste");
 	$user = new User("João Pedro", "joaopedrofn", "08799757419", "A");
 	$data = array(
 		"room" => $_POST["room"],

@@ -19,7 +19,7 @@ class Database
 		Database::$database = $database;
 		$dsn = "mysql:dbname=".Database::$database.";host=".Database::$host;
 		try{
-			Database::$db = new PDO($dsn, Database::$user, Database::$password);
+			Database::$db = new PDO($dsn, Database::$user, Database::$password, array('charset'=>'utf8'));
 		} catch(PDOException $e){
 			echo 'Falha de conexão: <br>'.$e->getMessage();
 		}

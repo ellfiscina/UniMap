@@ -15,6 +15,17 @@ class Discipline
 	public function set($attr, $value){
 		$this->$attr = $value;
 	}
+
+	public fuinction getDiscpline($id){
+		$discipline = Database::select(array("cod_disc", "name", "department"), array("disciplines"), "cod_disc = ".$id)[0];
+		if(!$discipline) return FALSE;
+		$this->set("id", $discipline["cod_disc"]);
+		$this->set("name", $discipline["name"]);
+		$this->set("department", $discipline["department"]);
+		return TRUE;
+
+	}
+
 	public function create(){
 		if(!preg_match("/\w{4}\d{4}/", $this->get("id")))
 			return array("cod" => 1, "msg" => "Código de disciplina inválido.");
