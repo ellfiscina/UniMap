@@ -25,5 +25,35 @@ spl_autoload_register(function ($class_name) {
 		case "search":
 			ECHO $interface->search($_GET["term"]);
 			break;	
+		case "signUp":
+			echo $interface->signUpUser();
+			break;	
+		case "editUser":
+			echo $interface->editUser();
+			break;	
+		case "reserve":
+			echo $interface->reserve();
+			break;	
+		case "askRoom":
+			echo $interface->askRoom();
+			break;	
+		case "grantAccess":
+			echo $interface->grantAccess();
+			break;	
+		case "removeUser":
+			echo $interface->removeUser();
+			break;	
+		case "createDiscipline":
+			echo $interface->vreateDiscipline();
+			break;	
+		case "revokeAccess":
+			echo $interface->revokeAccess();
+			break;
+		case "showNotification":
+			echo $interface->showNotification();
+			break;
+		case "answerNotification":
+			echo $interface->answerNotification();
+			break;
 	}
 ?>

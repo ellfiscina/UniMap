@@ -129,6 +129,16 @@ class IFace
 		}
 	}
 
+	public function editUser(){
+		$user = new User();
+		$user->set("cpf", $_POST["cpf"]);
+		$user->set("name", $_POST["name"]);
+		$user->set("email", $_POST["email"]);
+		$user->set("type", $_POST["type"]);
+		$result = $user->edit($_POST["pass"], $_POST["passConf"]);
+		return json_encode($result);
+	}
+
 	public function showNotification(){
 		$results = Database::select(array("*"), array("notifications"), "TRUE");
 		if($results){
@@ -154,6 +164,38 @@ class IFace
 		$disciplineResults = Database::select(array("cod_disc", "name", "department"), array("disciplines"), "name LIKE \"%".$term."%\"");
 		$results = array("teachers" => $teacherResults, "disciplines" => $disciplineResults);
 		return json_encode($results);
+	}
+
+	public function reserve(){
+		$user = new User();
+		$user->getUser($_SESSION["user"]["cpf"]);
+		return json_encode($user->reserveRoom($_POST));
+	}
+
+	public function askRoom(){
+		$user = new User();
+		$user->getUser($_SESSION["user"]["cpf"]);
+		return json_encode($user->askRoom($_POST["room"]));
+	}
+
+	public function grantAccess(){
+		$user = new User();
+		return json_encode($user->grantAccess($_POST["user"], $_POST["room"]));
+	}
+
+	public function revokeAccess(){
+		$user = new User();
+		return json_encode($user->revokeAccess($_POST["user"], $_POST["room"]));
+	}
+	public function removeUser(){
+		$user = new User();
+		$user->getUser($_POST["user"]);
+		return json_encode($user->remove());
+	}
+
+	public function answerNotification(){
+		$user = new User();
+		return json_encode($user->answerNotification($_GET["room"]));
 	}
 
 

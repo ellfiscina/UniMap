@@ -211,6 +211,17 @@ class User
 		$this->set("cpf", $results["cpf"]);
 		return TRUE;
 	}
+	public function getUser($cpf){
+		$results = Database::select(array("*"), array("users"), "cpf = \"".$cpf."\"");
+		if(!$results) return FALSE;
+		$results = $results[0];
+		$this->set("id", $results["id"]);
+		$this->set("name", $results["name"]);
+		$this->set("email", $results["email"]);
+		$this->set("type", $results["type"]);
+		$this->set("cpf", $results["cpf"]);
+		return TRUE;
+	}
 }
 
 ?>
