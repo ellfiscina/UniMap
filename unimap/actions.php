@@ -22,5 +22,8 @@ spl_autoload_register(function ($class_name) {
 		case "logout":
 			$interface->logout();
 			break;
+		case "search":
+			ECHO $interface->search($_GET["term"]);
+			break;	
 	}
 ?>

@@ -198,7 +198,11 @@ $('#signed').hide();
 
  $("#loginForm").submit(function(){
  	$.post('actions.php?action=login', $('#loginForm').serialize()).done(function(data){
- 	reload();
+ 	window.location.reload();
  })});
+
+ $("#searchButton").click(function(){
+ 	window.location.assign("actions.php?action=search&term="+$("#inputSearch").val());
+ });
 
 });
