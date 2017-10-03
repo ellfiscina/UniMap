@@ -63,6 +63,7 @@
 			<div id="results"></div>
 		</div>
 	</section>
+	<div id="modalPesquisa" class="modal fade" role="dialog"></div>
 	<footer></footer>
 </body>
 	<script type="text/javascript" src="jquery/jquery.min.js"></script>
