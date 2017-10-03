@@ -74,7 +74,7 @@ section #main{
 
 .left, .right{
 	background-color: #f4b350;
-	height: 750px;
+	height: 790px;
 	width: 40%;
 	left: 4%;
     margin: 4% 3%;
@@ -106,28 +106,28 @@ section #main{
 }
 
 .gRoom, .room,.fRoom, .sRoom{
-	height: 64.5px;
+	height: 69px;
 }
 .gFacility, .fFacility, .sFacility, .fCornerRoom, .sCornerRoom{
 	height: 120px;
 }
 .fCRoom{
-	height: 116px;
+	height: 124px;
 }
 .sCRoom{
-	height: 145px;
+	height: 155px;
 }
 .sRoom5{
-	height: 116px;
+	height: 124px;
 } 
 .sRoom6, .lab{
-	height: 96.8px;
+	height: 103.2px;
 }
 .fRoom8{
-	height: 72.5px;
+	height: 77.6px;
 }
 .biblioteca{
-	height: 580px;
+	height: 620px;
 }
 .empty{
 	background-color: #f4b350;
