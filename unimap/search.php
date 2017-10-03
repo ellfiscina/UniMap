@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/map.css">
 	<link rel="stylesheet" type="text/css" href="css/map-responsive.css">
+	<script type="text/javascript">
+		var get = <?php echo "\"".$_GET["term"]."\""; ?>;
+	</script>
 </head>
 <body>
 	<header>
@@ -57,7 +60,7 @@
 
 	<section>
 		<div class="container" id="main">
-			
+			<div id="results"></div>
 		</div>
 	</section>
 	<footer></footer>
@@ -67,4 +70,5 @@
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="jquery/map.js"></script>
+	<script type="text/javascript" src="jquery/search.js"></script>
 </html>

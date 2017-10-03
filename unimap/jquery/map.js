@@ -202,7 +202,7 @@ $('#signed').hide();
  })});
 
  $("#searchButton").click(function(){
- 	window.location.assign("actions.php?action=search&term="+$("#inputSearch").val());
+ 	window.location.assign("search.php?term="+$("#inputSearch").val());
  });
 
 });
