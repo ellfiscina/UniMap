@@ -3,19 +3,68 @@ $(document).ready(function(){
 	//var json = JSON.parse('["usedroom", "usedroom", "emptyroom", "emptyroom", "usedroom", "emptyroom", "usedroom", "usedroom", "emptyroom", "emptyroom", "usedroom", "emptyroom" ]');
 	var j;
 	var colegiado = [{
-		nome: "Colegiado de Computacao",
-		coordenador: "Max",
-		vice: "Ana Emilia", 
+		nome: "Colegiado de Engenharia Mecânica",
+		coordenador: "Luiz Mariano Pereira",
+		vice: "José Pereira Alencar Júnior", 
+		email: "cenmec@univasf.edu.br", 
+		site: "www.mecanica.univasf.edu.br".link("http://www.mecanica.univasf.edu.br/"),
+		tel: "(74) 2102-7633" 
+		},
+		{
+		nome: "Colegiado de Engenharia da Computacao",
+		coordenador: "Max Santana Rolemberg Farias",
+		vice: "Ana Emília de Melo Queiroz", 
 		email: "ccomp@univasf.edu.br", 
-		site: "univasf.edu.br/~ccomp",
-		tel: "123456" 
-		},{
-		nome: "Colegiado de Mecânica",
-		coordenador: "X",
-		vice: "Y", 
-		email: "cm@univasf.edu.br", 
-		site: "univasf.edu.br/~cm",
-		tel: "654321" 
+		site: "www.cecomp.univasf.edu.br".link("http://www.cecomp.univasf.edu.br/"),
+		tel: "(74) 2102-7636" 
+		},
+		{
+		nome: "Colegiado de Ciências Sociais",
+		coordenador: "Rosicleide Araújo de Melo",
+		vice: "Ednaldo Ferreira Tôrres", 
+		email: "ccsociais@univasf.edu.br", 
+		site: "www.cienciassociais.univasf.edu.br".link("http://www.cienciassociais.univasf.edu.br/"),
+		tel: "(74) 2102-7639" 
+		},
+		{
+		nome: "Colegiado de Artes Visuais",
+		coordenador: "Clarissa Campello Ramos",
+		vice: "Elson de Assis Rabelo", 
+		email: "cartes@univasf.edu.br", 
+		site: "www.artes.univasf.edu.br".link("http://www.artes.univasf.edu.br/"),
+		tel: "(074) 2102-7642" 
+		},
+		{
+		nome: "Colegiado de Engenharia Elétrica",
+		coordenador: "Isnaldo José de Souza Coelho",
+		vice: "Antonio de Almeida Fernandes", 
+		email: "cenel@univasf.edu.br", 
+		site: "www.eletrica.univasf.edu.br".link("http://www.eletrica.univasf.edu.br/"),
+		tel: "(74)2102-7630" 
+		},
+		{
+		nome: "Colegiado de Engenharia de Produção",
+		coordenador: "Francisco Alves Pinheiro",
+		vice: "Carlos Antonio Freitas da Silva", 
+		email: "cprod@univasf.edu.br", 
+		site: "univasf.edu.br/~cprod".link("http://univasf.edu.br/~cprod"),
+		tel: "(74) 2102-7627 " 
+		},
+		{
+		nome: "Colegiado de Engenharia Agrícola e Ambiental",
+		coordenador: "Clóvis Manoel Carvalho Ramos",
+		vice: "Miriam Cleide Cavalcante de Amorim", 
+		email: "cenamb@univasf.edu.br", 
+		site: "www.agricola.univasf.edu.br".link("http://www.agricola.univasf.edu.br/"),
+		tel: "(74) 2102-7621" 
+		},
+		{
+		nome: "Colegiado de Engenharia Civil",
+		coordenador: "Paulo César Rodrigues de Lima Júnior",
+		vice: "Sérgio Luís de Oliveira", 
+		email: "ccivil@univasf.edu.br", 
+		site: "www.civil.univasf.edu.br".link("http://www.civil.univasf.edu.br/"),
+		tel: "(074) 2102-7624" 
 		}];
 
 	$(".groundli").addClass("disabled");
