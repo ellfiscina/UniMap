@@ -70,13 +70,16 @@ $(document).ready(function(){
 	$(".groundli").addClass("disabled");
 $('#signed').hide();
 	$.getJSON("actions.php?action=showSessionInfo", function(json){
+		console.log("hey");
 		if(json){
 			$('#signin').hide();
 			$('#signed').show();
-			$("#signed").html('<p>'+json["name"]+'</p><i class="fa fa-user fa-lg" aria-hidden="true"></i>');				
+			$("#btnSigned").html('<p>'+json["name"]+'</p><i class="fa fa-user fa-lg" aria-hidden="true"></i>');				
 		}
 	});
-	
+	$("#btnLogout").click(function(){
+		$.ajax({url: "actions.php?action=logout", success: function(json){ window.location.reload(); }})
+	});
 
 	showRoom(0);
 
@@ -247,7 +250,9 @@ $('#signed').hide();
 
  $("#loginForm").submit(function(){
  	$.post('actions.php?action=login', $('#loginForm').serialize()).done(function(data){
- 	window.location.reload();
+ 		if(data["cod"]==0) window.location.reload();
+ 		else
+ 			$("#msgError").html(data["msg"]);
  })});
 
  $("#searchButton").click(function(){

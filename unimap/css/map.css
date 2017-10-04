@@ -214,7 +214,7 @@ p{
 	text-align: right;
     position: relative;
     top: 35px;
-	left: 280px;
+	/*left: 280px;*/
 	color: white;
 }
 #btnSigned{
@@ -226,5 +226,6 @@ p{
     padding-right: 15px;
 }
 .dropdown-menu {
-    left: -79px;
+    /*left: -79px;*/
+    width: 120px;
 }

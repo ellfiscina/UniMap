@@ -50,42 +50,37 @@ class IFace
 			$date = new DateTime();
 			date_add($date, date_interval_create_from_date_string($i-$weekDay." days"));
 			$date = $date->format("Y-m-d");
-			for($j = 7; $j < 22; $j++){
+			for($j = 7; $j <= 22; $j++){
 				$schedule = new Schedule();
 				$schedule->getScheduleByDiscipline($discipline->get("id"), $date, $j);
-				if($schedule->get("room") != NULL){
 					$return[date("l", strtotime($date))][$j]["discipline"]["id"] = $schedule->get("discipline");
 					$return[date("l", strtotime($date))][$j]["discipline"]["name"] = Database::select(array("name"), array("disciplines"), "cod_disc = ".$schedule->get("discipline"))[0]["name"];
 					$return[date("l", strtotime($date))][$j]["teacher"]["name"] = utf8_encode(Database::select(array("name"), array("users"), "cpf = ".$schedule->get("teacher"))[0]["name"]);
 					$return[date("l", strtotime($date))][$j]["room"]["id"] = $schedule->get("room");
 					$return[date("l", strtotime($date))][$j]["room"]["name"] = Database::select(array("name"), array("rooms"), "cod_sala = ".$schedule->get("room"))[0]["name"];
-				}
 			}
 		}
-		echo json_encode($return);
 		return json_encode($return);
 	}
 	public function showTeacherSchedule($id){
 		$teacher = new User();
-		$teacher->getTeacher($id);
+		$teacher->getUser($id);
 		$weekDay = date("w");
 		for($i = 0; $i <7; $i++){
 			$date = new DateTime();
 			date_add($date, date_interval_create_from_date_string($i-$weekDay." days"));
 			$date = $date->format("Y-m-d");
-			for($j = 7; $j < 22; $j++){
+			for($j = 7; $j <= 22; $j++){
 				$schedule = new Schedule();
 				$schedule->getScheduleByTeacher($teacher->get("id"), $date, $j);
-				if($schedule->get("room") != NULL){
 					$return[date("l", strtotime($date))][$j]["discipline"]["id"] = $schedule->get("discipline");
 					$return[date("l", strtotime($date))][$j]["discipline"]["name"] = Database::select(array("name"), array("disciplines"), "cod_disc = ".$schedule->get("discipline"))[0]["name"];
 					$return[date("l", strtotime($date))][$j]["room"]["id"] = $schedule->get("room");
 					$return[date("l", strtotime($date))][$j]["room"]["name"] = Database::select(array("name"), array("rooms"), "cod_sala = ".$schedule->get("room"))[0]["name"];
 					$return[date("l", strtotime($date))][$j]["teacher"]["name"] = utf8_encode(Database::select(array("name"), array("users"), "cpf = ".$schedule->get("teacher"))[0]["name"]);
-				}
+			
 			}
 		}
-		echo json_encode($return);
 		return json_encode($return);
 	}
 
@@ -95,9 +90,9 @@ class IFace
 			$_SESSION["user"]["name"] = $user->get("name");
 			$_SESSION["user"]["email"] = $user->get("email");
 			$_SESSION["user"]["type"] = $user->get("type");
-			return json_encode(true);
+			return json_encode(array("cod" => 0, "msg" => "YAY"));
 		} else {
-			return json_encode(array("cod"=>1, "msg"=>"Combinação de CPF e senha inválidos, por favor, verifique o CPF e a senha ou contate a administração."));
+			return json_encode(array("cod"=>1, "msg"=>utf8_encode("Combinação de CPF e senha inválidos, por favor, verifique o CPF e a senha ou contate a administração.")));
 		}
 	}
 

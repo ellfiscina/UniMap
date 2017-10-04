@@ -16,7 +16,7 @@ class Discipline
 		$this->$attr = $value;
 	}
 
-	public fuinction getDiscpline($id){
+	public function getDiscipline($id){
 		$discipline = Database::select(array("cod_disc", "name", "department"), array("disciplines"), "cod_disc = ".$id)[0];
 		if(!$discipline) return FALSE;
 		$this->set("id", $discipline["cod_disc"]);

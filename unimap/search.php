@@ -19,14 +19,23 @@
 				<div class="col-sm-4"><a href="index.html" target="_self"><h1>UniMap</h1></a></div>
 				<div class="col-sm-4">
 					<div class="input-group">
-						<input type="text" name="search" placeholder="Pesquisar" id="inputSearch">
+						<input type="text" name="search" id="inputSearch" placeholder="Pesquisar">
 						<span class="input-group-btn">
-							<a class="btn btn-default btn-sm" id="searchButton" href="javascript:void(0);"><i class="fa fa-search"></i></a>
+							<a class="btn btn-default btn-sm" href="javascript:void(0);" id="searchButton" target="_self"><i class="fa fa-search"></i></a>
 						</span>
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<a href="#" class="btn button" role="button" data-toggle="modal" data-target="#loginDiv"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i></a>
+					<a href="#" id="signin" class="btn button" role="button" data-toggle="modal" data-target="#loginDiv"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i></a>
+					<div  id = "signed" class="dropdown">
+						<button id = "btnSigned" class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+							<span class="caret"></span></button>
+						<ul class="dropdown-menu dropdown-menu-right">
+							<li><a href="#">Cadastrar Disciplina</a></li>
+							<li><a href="#">Editar Usuário</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -38,25 +47,27 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title"><i class="fa fa-sign-in" aria-hidden="true"></i></span> &nbsp;&nbsp;Login</h4>
 				</div>
-				<form method="POST" action="login.php">
+				<form method="POST" id='loginForm'>
 					<div class="modal-body">
 						<div class="input-group">
 						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-						  <input type="text" class="form-control" name="email" placeholder="E-mail" aria-describedby="basic-addon1">
+						  <input type="text" id="cpf" class="form-control" name="cpf" placeholder="CPF" aria-describedby="basic-addon1">
 						</div><br>
 						<div class="input-group">
 						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
-						  <input type="password" class="form-control" name="password" placeholder="Senha" aria-describedby="basic-addon1">
+						  <input type="password" id="password" class="form-control" name="pass" placeholder="Senha" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-						<input type="submit" class="btn btn-success" value='Entrar'><br>
+						<button type="button" class="btn btn-warning" data-dismiss="modal">Cadastrar</button>
+						<input type="submit"  class="btn btn-success" value='Entrar'><br>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div> <!-- Login -->
+
 
 	<section>
 		<div class="container" id="main">

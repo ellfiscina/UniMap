@@ -19,6 +19,12 @@ spl_autoload_register(function ($class_name) {
 		case "showRoomSchedule":
 			echo $interface->showRoomSchedule($_GET["room"]);
 			break;
+		case "showDisciplineSchedule":
+			echo $interface->showDisciplineSchedule($_GET["discipline"]);
+			break;
+		case "showTeacherSchedule":
+			echo $interface->showTeacherSchedule($_GET["teacher"]);
+			break;
 		case "logout":
 			$interface->logout();
 			break;
