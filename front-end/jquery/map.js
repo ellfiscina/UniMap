@@ -183,10 +183,10 @@ $(document).ready(function(){
 		$('#modalAula').html(html);
    });
 
-   $('#submit').click(function(){
+   /*$('#submit').click(function(){
    		var valid = true;
    		validate(valid);
-   });
+   });*/
 
    function validate(valid){
    		var attempt = 3;

@@ -193,6 +193,5 @@ class IFace
 		return json_encode($user->answerNotification($_GET["room"]));
 	}
 
-
 }
  ?>
