@@ -87,8 +87,8 @@
 						<div class="empty"><p>Banheiro</p></div>
 						<div>
 							<div class="gFacility"><p></p></div>
-							<div class="fCornerRoom"><p>Lab. de Hardware</p></div>
-							<div class="sCornerRoom"><p>Lab. de Computação Gráfica</p></div>
+							<div class="fCornerRoom" id="46" data-toggle="modal" data-target="#modalAula"><p>Lab. de Hardware</p></div>
+							<div class="sCornerRoom" id="45" data-toggle="modal" data-target="#modalAula"><p>Lab. de Computação Gráfica</p></div>
 						</div>
 					</div> <!-- lado esquerdo -->
 					<div class="col-sm-6" id="middle">
@@ -109,14 +109,14 @@
 					<div class="col-sm-3 sala2">
 						<div>
 							<div class="gRoom"><p>Fábrica de Software</p></div>
-							<div class="gRoom"><p>Lab. de Redes</p></div>
+							<div class="gRoom" id="44" data-toggle="modal" data-target="#modalAula"><p>Lab. de Redes</p></div>
 							<div class="gRoom"><p>Lab.</p></div>
 							<div class="gRoom"><p>Lab.</p></div>
 							<div class="gRoom"><p>Lab.</p></div>
-							<div class="gRoom"><p>Lab. de Robótica</p></div>
-							<div class="gRoom"><p>Lab. de Banco de Dados</p></div>
-							<div class="gRoom"><p>Lab. de Programação Avançada</p></div>
-							<div class="gRoom"><p>Lab. de Programação Básica</p></div>
+							<div class="gRoom" id="43" data-toggle="modal" data-target="#modalAula"><p>Lab. de Robótica</p></div>
+							<div class="gRoom" id="42" data-toggle="modal" data-target="#modalAula"><p>Lab. de Banco de Dados</p></div>
+							<div class="gRoom" id="41" data-toggle="modal" data-target="#modalAula"><p>Lab. de Programação Avançada</p></div>
+							<div class="gRoom" id="40" data-toggle="modal" data-target="#modalAula"><p>Lab. de Programação Básica</p></div>
 							<div class="fRoom aula" id="39" data-toggle="modal" data-target="#modalAula"><p>Sala 41</p></div>
 							<div class="fRoom aula" id="38" data-toggle="modal" data-target="#modalAula"><p>Sala 40</p></div>
 							<div class="fRoom aula" id="37" data-toggle="modal" data-target="#modalAula"><p>Sala 39</p></div>
@@ -420,6 +420,70 @@
 
 	<div id="modalAula" class="modal fade" role="dialog"></div>
 	<div id="modalColegiado" class="modal fade" role="dialog"></div>
+	<div id="modalLab" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Laboratório</h4>
+				</div>
+					<div class="modal-body">
+					</div>
+					<div class="modal-footer">
+						<button data-toggle="modal" data-target="#modalAutoriza" type="button" class="btn btn-primary">Autorizar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="modalAutoriza" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Autorizar Acesso</h4>
+				</div>
+				<form method="POST" id='autoriza'>
+					<div class="modal-body">
+						<div class="input-group">
+							<span>Digite o(s) CPF(s) do(s) aluno(s) autorizado(s)</span><br>
+						  	<textarea type="text" id="cpfAutoriza" class="form-control" name="cpf" placeholder="CPF" aria-describedby="basic-addon1"></textarea>
+						</div><br>
+					</div>
+					<div class="modal-footer">
+						<span id="msgErrorCD"></span>
+						<input type="submit"  class="btn btn-success" value='Entrar'><br>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="modalReserva" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Cadastrar Disciplina</h4>
+				</div>
+				<form method="POST" id='cadastroFormDisc'>
+					<div class="modal-body">
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-book" aria-hidden="true"></i></span>
+						  <input type="text" id="nome" class="form-control" name="nome" placeholder="Nome da Disciplina" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-users" aria-hidden="true"></i></span>
+						  <input type="text" id="department" class="form-control" name="department" placeholder="Colegiado" aria-describedby="basic-addon1">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<span id="msgErrorCD"></span>
+						<input type="submit"  class="btn btn-success" value='Entrar'><br>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<div id="modalCadastroD" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -456,7 +520,7 @@
 				<form method="POST" id='cadastroFormUser'>
 					<div class="modal-body">
 						<div class="input-group">
-						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
 						  <input type="text" id="cpf" class="form-control" name="cpf" placeholder="CPF" aria-describedby="basic-addon1">
 						</div><br>
 						<div class="input-group">
@@ -475,21 +539,21 @@
 						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
 						  <input type="password" id="password" class="form-control" name="passConf" placeholder="Confirmação de Senha" aria-describedby="basic-addon1">
 						</div><br>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="type" id="typeA" value="A" checked>
+						<div class="radio-inline">
+							<label class="radio-inline">
+								<input type="radio" name="type" id="typeA" value="A" checked>
 								Aluno
 							</label>
 						</div>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="type" id="typeP" value="P" checked>
+						<div class="radio-inline">
+							<label class="radio-inline">
+								<input type="radio" name="type" id="typeP" value="P" checked>
 								Professor
 							</label>
 						</div>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="type" id="typeC" value="C" checked>
+						<div class="radio-inline">
+							<label class="radio-inline">
+								<input type="radio" name="type" id="typeC" value="C" checked>
 								Coordenação
 							</label>
 						</div>

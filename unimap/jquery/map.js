@@ -200,7 +200,8 @@ $('#signed').hide();
 									'</div>' +
 								'</div>' +
 							'<div class="modal-footer">' +
-								'<button type="button" class="btn btn-primary">Reservar</button>' +
+								'<button data-toggle="modal" data-target="#modalReserva" type="button" class="btn btn-primary">Reservar</button>' +
+								'<button data-toggle="modal" data-target="#modalAutoriza" type="button" class="btn btn-primary">Autorizar</button>' +
 							'</div></div></div>';
 							$("#modalAula").html(html);
    		$.getJSON("actions.php?action=showRoomSchedule&room="+y, function(json){

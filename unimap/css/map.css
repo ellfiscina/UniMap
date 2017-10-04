@@ -232,4 +232,7 @@ p{
 .form-group{
 	width: fit-content;
 }
-
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+    margin-top: 6px;
+    margin-left: 4px;
+}
