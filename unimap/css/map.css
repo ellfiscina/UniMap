@@ -229,3 +229,7 @@ p{
     /*left: -79px;*/
     width: 120px;
 }
+.form-group{
+	width: fit-content;
+}
+
