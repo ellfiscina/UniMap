@@ -196,12 +196,12 @@ p{
 	color: #ecf0f1;
 	text-align: center;
 }
-#modalAula .modal-dialog{
+#modalAula .modal-dialog, #modalPesquisa .modal-dialog{
 	width: 70%;
 }
-#modalAula .table{
+#modalAula .table, #modalPesquisa .table{
 	margin: auto;
-	width: 77%;
+	width: 70%;
 }
 #modalColegiado .container{
 	width: 100%;
@@ -214,11 +214,17 @@ p{
 	text-align: right;
     position: relative;
     top: 35px;
-	left: 70%;
+	left: 280px;
 	color: white;
+}
+#btnSigned{
+	background-color: #3498db;
 }
 #signed p{
 
 	display: inline-block;
     padding-right: 15px;
+}
+.dropdown-menu {
+    left: -79px;
 }

@@ -194,6 +194,7 @@ $(document).ready(function(){
    			
    			$('#signin').hide();
    			$('#signed').show();
+   			$("#btnSigned").html('<p>Ellen </p><i class="fa fa-user fa-lg" aria-hidden="true"></i>');
    			alert("Bem vindo");
    			
 

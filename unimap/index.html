@@ -24,7 +24,16 @@
 				</div>
 				<div class="col-sm-4">
 					<a href="#" id="signin" class="btn button" role="button" data-toggle="modal" data-target="#loginDiv"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i></a>
-					<a href="#" id="signed" class="btn button" role="button"><p>User </p><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+					<div  id = "signed" class="dropdown">
+						<button id = "btnSigned" class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+							<span class="caret"></span></button>
+						<ul class="dropdown-menu dropdown-menu-right">
+							<li><a href="#">Cadastrar Disciplina</a></li>
+							<li><a href="#">Cadastrar Horário</a></li>
+							<li><a href="#">Editar Usuário</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -410,6 +419,7 @@
 
 	<div id="modalAula" class="modal fade" role="dialog"></div>
 	<div id="modalColegiado" class="modal fade" role="dialog"></div>
+
 	<footer></footer>
 </body>
 	<script type="text/javascript" src="jquery/jquery.min.js"></script>

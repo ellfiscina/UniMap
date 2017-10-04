@@ -73,7 +73,7 @@ $('#signed').hide();
 		if(json){
 			$('#signin').hide();
 			$('#signed').show();
-			$("#signed").html('<p>'+json["name"]+'</p><i class="fa fa-user fa-lg" aria-hidden="true"></i>');	
+			$("#signed").html('<p>'+json["name"]+'</p><i class="fa fa-user fa-lg" aria-hidden="true"></i>');				
 		}
 	});
 	
