@@ -429,11 +429,11 @@
 				<form method="POST" id='cadastroFormDisc'>
 					<div class="modal-body">
 						<div class="input-group">
-						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-book" aria-hidden="true"></i></span>
 						  <input type="text" id="nome" class="form-control" name="nome" placeholder="Nome da Disciplina" aria-describedby="basic-addon1">
 						</div><br>
 						<div class="input-group">
-						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-users" aria-hidden="true"></i></span>
 						  <input type="text" id="department" class="form-control" name="department" placeholder="Colegiado" aria-describedby="basic-addon1">
 						</div>
 					</div>
@@ -455,12 +455,38 @@
 				<form method="POST" id='cadastroFormUser'>
 					<div class="modal-body">
 						<div class="input-group">
-						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
 						  <input type="text" id="cpf" class="form-control" name="cpf" placeholder="CPF" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+						  <input type="text" id="name" class="form-control" name="name" placeholder="Nome" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at" aria-hidden="true"></i></span>
+						  <input type="email" id="email" class="form-control" name="email" placeholder="Email" aria-describedby="basic-addon1">
 						</div><br>
 						<div class="input-group">
 						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
 						  <input type="password" id="password" class="form-control" name="pass" placeholder="Senha" aria-describedby="basic-addon1">
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="type" id="typeA" value="A" checked>
+								Aluno
+							</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="type" id="typeP" value="P" checked>
+								Professor
+							</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="type" id="typeC" value="C" checked>
+								Coordenação
+							</label>
 						</div>
 					</div>
 					<div class="modal-footer">
