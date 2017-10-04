@@ -212,7 +212,7 @@ class User
 		return TRUE;
 	}
 	public function getUser($cpf){
-		$results = Database::select(array("*"), array("users"), "cpf = \"".$cpf."\"");
+		$results = Database::select(array("*"), array("users"), "cpf = \"".$cpf."\" OR id = ".$cpf);
 		if(!$results) return FALSE;
 		$results = $results[0];
 		$this->set("id", $results["id"]);

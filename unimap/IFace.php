@@ -72,7 +72,7 @@ class IFace
 			$date = $date->format("Y-m-d");
 			for($j = 7; $j <= 22; $j++){
 				$schedule = new Schedule();
-				$schedule->getScheduleByTeacher($teacher->get("id"), $date, $j);
+				$schedule->getScheduleByTeacher($teacher->get("cpf"), $date, $j);
 					$return[date("l", strtotime($date))][$j]["discipline"]["id"] = $schedule->get("discipline");
 					$return[date("l", strtotime($date))][$j]["discipline"]["name"] = Database::select(array("name"), array("disciplines"), "cod_disc = ".$schedule->get("discipline"))[0]["name"];
 					$return[date("l", strtotime($date))][$j]["room"]["id"] = $schedule->get("room");
@@ -92,7 +92,7 @@ class IFace
 			$_SESSION["user"]["type"] = $user->get("type");
 			return json_encode(array("cod" => 0, "msg" => "YAY"));
 		} else {
-			return json_encode(array("cod"=>1, "msg"=>utf8_encode("Combinação de CPF e senha inválidos, por favor, verifique o CPF e a senha ou contate a administração.")));
+			return json_encode(array("cod"=>1, "msg"=>utf8_encode("Combina&ccedil;&atilde;o de CPF e senha inv&aacute;lidos, por favor, verifique o CPF e a senha ou contate a administra&ccedil;&atilde;o.")));
 		}
 	}
 

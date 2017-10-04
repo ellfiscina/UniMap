@@ -28,8 +28,8 @@
 						<button id = "btnSigned" class="btn dropdown-toggle" type="button" data-toggle="dropdown">
 							<span class="caret"></span></button>
 						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="#">Cadastrar Disciplina</a></li>
-							<li><a href="#">Editar Usuário</a></li>
+							<li><a id="btnCreateDiscipline" href="#">Cadastrar Disciplina</a></li>
+							<li><a id="btnEdit" href="#">Editar Usuário</a></li>
 							<li><a id="btnLogout" href="#">Logout</a></li>
 						</ul>
 					</div>
@@ -44,7 +44,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title"><i class="fa fa-sign-in" aria-hidden="true"></i></span> &nbsp;&nbsp;Login</h4>
 				</div>
-				<form method="POST" id='loginForm'>
+				<form id='loginForm'>
 					<div class="modal-body">
 						<div class="input-group">
 						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -56,7 +56,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<span id="msgError"></span>
+						<div id="msgError" style="text-align: center; background-color: #FAA; border-radius: 5px; border: 1px solid #F55; color: white; margin: 10px; display: none;"></div>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 						<button type="button" class="btn btn-warning" data-dismiss="modal">Cadastrar</button>
 						<input type="submit"  class="btn btn-success" value='Entrar'><br>

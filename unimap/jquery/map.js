@@ -250,9 +250,13 @@ $('#signed').hide();
 
  $("#loginForm").submit(function(){
  	$.post('actions.php?action=login', $('#loginForm').serialize()).done(function(data){
+ 		data = JSON.parse(data);
  		if(data["cod"]==0) window.location.reload();
- 		else
+ 		else{
+
+ 			$("#msgError").show();
  			$("#msgError").html(data["msg"]);
+ 		}
  })});
 
  $("#searchButton").click(function(){
