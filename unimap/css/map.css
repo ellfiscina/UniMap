@@ -64,7 +64,7 @@ section{
 section #main{
 	background-color: #ecf0f1;
 	width: 90%;
-	height: 900px;
+	height: 920px;
 	position: absolute;
 	left: 60px;
 	top: 30px;
@@ -74,7 +74,7 @@ section #main{
 
 .left, .right{
 	background-color: #f4b350;
-	height: 790px;
+	height: 800px;
 	width: 40%;
 	left: 4%;
     margin: 4% 3%;
@@ -131,7 +131,7 @@ section #main{
 }
 .empty{
 	background-color: #f4b350;
-	height: 30px;
+	height: 40px;
 }
 .nothing{
 	height: 430px;
@@ -165,7 +165,7 @@ section #main{
 #nav{
 	width: auto;
     left: 2%;
-    top: 648px;
+    top: 700px;
 }
 .usedroom{
 	background-color: #e74c3c;
@@ -192,7 +192,7 @@ section #main{
     width: 6%;
     height: auto;
 }
-p{
+section p{
 	color: #ecf0f1;
 	text-align: center;
 }

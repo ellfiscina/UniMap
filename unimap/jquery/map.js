@@ -2,6 +2,7 @@ $(document).ready(function(){
 	$.mobile.loading().hide();
 	//var json = JSON.parse('["usedroom", "usedroom", "emptyroom", "emptyroom", "usedroom", "emptyroom", "usedroom", "usedroom", "emptyroom", "emptyroom", "usedroom", "emptyroom" ]');
 	var j;
+	var logado = false;
 	var colegiado = [{
 		nome: "Colegiado de Engenharia Mecânica",
 		coordenador: "Luiz Mariano Pereira",
@@ -69,12 +70,15 @@ $(document).ready(function(){
 
 	$(".groundli").addClass("disabled");
 $('#signed').hide();
+
 	$.getJSON("actions.php?action=showSessionInfo", function(json){
 		console.log("hey");
 		if(json){
+			logado = json;
 			$('#signin').hide();
 			$('#signed').show();
-			$("#btnSigned").html('<p>'+json["name"]+'</p><i class="fa fa-user fa-lg" aria-hidden="true"></i>');				
+			$("#btnSigned").html('<p>'+json["name"]+'</p><i class="fa fa-user fa-lg" aria-hidden="true"></i>');	
+
 		}
 	});
 	$("#btnLogout").click(function(){
@@ -199,9 +203,9 @@ $('#signed').hide();
 									'<div class="container" id="containerSchedule">'+
 									'</div>' +
 								'</div>' +
-							'<div class="modal-footer">' +
-								'<button data-toggle="modal" data-target="#modalReserva" type="button" class="btn btn-primary">Reservar</button>' +
-								'<button data-toggle="modal" data-target="#modalAutoriza" type="button" class="btn btn-primary">Autorizar</button>' +
+							'<div class="modal-footer" >' +
+								'<button '+(logado?'data-toggle="modal" data-target="#modalReserva"':"")+' type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Reservar</button>' +
+								'<button '+(logado?'data-toggle="modal" data-target="#modalAutoriza"':"")+' type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Autorizar</button>' +
 							'</div></div></div>';
 							$("#modalAula").html(html);
    		$.getJSON("actions.php?action=showRoomSchedule&room="+y, function(json){
@@ -263,5 +267,53 @@ $('#signed').hide();
  $("#searchButton").click(function(){
  	window.location.assign("search.php?term="+$("#inputSearch").val());
  });
+
+$('#btnEdit').click(function(){
+	var html = '<div class="modal-dialog">' +
+			'<div class="modal-content">' +
+				'<div class="modal-header">' +
+					'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+					'<h4 class="modal-title">Cadastrar Usuário</h4>' +
+			'	</div>' +
+				'<form method="POST" id="cadastroFormUser">' +
+					'<div class="modal-body">' +
+						'<div class="input-group">' +
+						  '<span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>' +
+						 ' <input class="form-control" type="text" placeholder="CPF" value = "'+logado['cpf']+'" readonly>' +
+						'</div><br>' +
+						'<div class="input-group">' +
+						  '<span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>' +
+						  '<input type="text" id="name" class="form-control" name="name" placeholder="Nome" value = "'+logado['name']+'" aria-describedby="basic-addon1">' +
+						'</div><br>' +
+						'<div class="input-group">' +
+						  '<span class="input-group-addon" id="basic-addon1"><i class="fa fa-at" aria-hidden="true"></i></span>' +
+						  '<input type="email" id="email" class="form-control" name="email" placeholder="Email" value = "'+logado['email']+'" aria-describedby="basic-addon1">' +
+						'</div><br>' +
+						'<div class="input-group">' +
+						 ' <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>' +
+						 ' <input type="password" id="password" class="form-control" name="pass" placeholder="Senha" aria-describedby="basic-addon1">' +
+						'</div><br>' +
+						'<div class="input-group">' +
+						 ' <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>' +
+						'  <input type="password" id="password" class="form-control" name="passConf" placeholder="Confirmação de Senha" aria-describedby="basic-addon1">' +
+						'</div><br>' +
+					'</div>' +
+					'<div class="modal-footer">' +
+						'<span id="msgErrorCU"></span>' +
+						'<input type="submit"  class="btn btn-success" value="Editar"><br>' +
+				'</div>' +
+				'</form>' +
+			'</div>' +
+		'</div>';
+		$("#modalEditar").html(html);
+});
+
+
+
+
+
+
+
+
 
 });
