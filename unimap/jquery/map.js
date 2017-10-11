@@ -224,13 +224,13 @@ $(document).ready(function(){
 			'<div class="modal-body">' +
 			'<div class="input-group">' +
 			'<label style="margin-right: 10px;">Disciplina </label>' +
-			'<input list="disciplinas" name="disciplinas">' +
+			'<input list="disciplinas" name="disciplinas" id="disciplinaInput">' +
 			'<datalist id="disciplinas">' +
 			'</datalist>' +
 			'</div><br>' +
 			'<div class="input-group">' +
 			'<label style="margin-right: 11px;">Professor </label>' +
-			'<input list="profs" name="profs">' +
+			'<input list="profs" name="profs" id="profsInput">' +
 			'<datalist id="profs">' +
 			'</datalist>' +
 			'</div><br>' +
@@ -244,7 +244,7 @@ $(document).ready(function(){
   			'<div class="col-md-6">' +
   			'<div class="input-group">' +
   			'<label>Horário de término </label>' +
-  			'<input type="text" id="inicio" class="form-control" name="inicio" placeholder="10" aria-describedby="basic-addon1">' +
+  			'<input type="text" id="termino" class="form-control" name="termino" placeholder="10" aria-describedby="basic-addon1">' +
   			'</div>' +
   			'</div></div><br>' +
   			'<div class="row">' +
@@ -278,19 +278,29 @@ $(document).ready(function(){
 			'<span id="msgErrorCD"></span>' +
 			'<input type="submit"  class="btn btn-success" value="Reservar"><br>' +
 			'</div>' +
+			'<input type="text" name="discipline" value="" id="disciplineHidden">' +
+			'<input type="text" name="teacher" value="" id="teacherHidden">' +
 			'</form>' +
 			'</div>' +
 			'</div>';
 			$("#modalReserva").html(html);
 
-			$.getJSON("actions.php?action=showRoomSchedule&room="+y, function(json){
+
+			$("#disciplinaInput").on("input", function(){
+				$("#disciplineHidden").val($("option[value='"+$(this).val()+"']").html());
+			});
+			$("#profsInput").on("input", function(){
+				$("#teacherHidden").val($("option[value='"+$(this).val()+"']").html());
+			});
+
+			$.getJSON("actions.php?action=showDisciplines", function(json){
 				$(json).each(function(){
-					$("#disciplinas").append("<option id='"+ $(this)["name"] +"' value='"+ $(this)["name"]+"'>'"+ $(this)["cod_disc"] +"'</option>");
+					$("#disciplinas").append("<option id='"+ $(this)[0]["name"] +"' value='"+ $(this)[0]["name"]+"'>"+ $(this)[0]["cod_disc"] +"</option>");
 				});
 			});
-			$.getJSON("actions.php?action=showRoomSchedule&room="+y, function(json){
+			$.getJSON("actions.php?action=showTeachers", function(json){
 				$(json).each(function(){
-					$("#profs").append("<option id='"+ $(this)["name"] +"' value='"+ $(this)["name"]+"'>'"+ $(this)["id"] +"'</option>");
+					$("#profs").append("<option id='"+ $(this)[0]["name"] +"' value='"+ $(this)[0]["name"]+"'>"+ $(this)[0]["id"] +"</option>");
 				});
 			});
 			
@@ -381,11 +391,11 @@ $('#btnEdit').click(function(){
 	'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
 	'<h4 class="modal-title">Cadastrar Usuário</h4>' +
 	'</div>' +
-	'<form method="POST" id="cadastroFormUser">' +
+	'<form method="POST" id="editFormUser">' +
 	'<div class="modal-body">' +
 	'<div class="input-group">' +
 	'<span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>' +
-	' <input class="form-control" type="text" placeholder="CPF" value = "'+logado['cpf']+'" readonly>' +
+	' <input class="form-control" name="cpf" type="text" placeholder="CPF" value = "'+logado['cpf']+'" readonly>' +
 	'</div><br>' +
 	'<div class="input-group">' +
 	'<span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>' +
@@ -405,13 +415,27 @@ $('#btnEdit').click(function(){
 	'</div><br>' +
 	'</div>' +
 	'<div class="modal-footer">' +
-	'<span id="msgErrorCU"></span>' +
+	'<span id="msgErrorEU"></span>' +
 	'<input type="submit"  class="btn btn-success" value="Editar"><br>' +
 	'</div>' +
 	'</form>' +
 	'</div>' +
 	'</div>';
 	$("#modalEditar").html(html);
+
+	
+ $("#editFormUser").submit(function(){
+ 	$.post("actions.php?action=editUser", $("#editFormUser").serialize()).done(function(data){
+ 		console.log(data);
+ 		data = JSON.parse(data);
+ 		if(data["cod"]==0) window.location.reload();
+ 		else{
+
+ 			$("#msgErrorEU").show();
+ 			$("#msgErrorEU").html(data["msg"]);
+ 		}
+ 	});
+ });
 });
 
 $('input[value="A"]').prop("checked",true);

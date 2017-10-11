@@ -61,5 +61,11 @@ spl_autoload_register(function ($class_name) {
 		case "answerNotification":
 			echo $interface->answerNotification();
 			break;
+		case "showDisciplines":
+			echo $interface->showDisciplines();
+			break;
+		case "showTeachers":
+			echo $interface->showTeachers();
+			break;
 	}
 ?>

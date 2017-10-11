@@ -128,8 +128,10 @@ class IFace
 		$user->set("cpf", $_POST["cpf"]);
 		$user->set("name", $_POST["name"]);
 		$user->set("email", $_POST["email"]);
-		$user->set("type", $_POST["type"]);
+		//$user->set("type", $_POST["type"]);
 		$result = $user->edit($_POST["pass"], $_POST["passConf"]);
+		if($result["cod"] == 0)
+			$this->login($user->get("cpf"), $_POST["pass"]);
 		return json_encode($result);
 	}
 
@@ -192,6 +194,13 @@ class IFace
 		$user = new User();
 		return json_encode($user->answerNotification($_GET["room"]));
 	}
-
+	public function showDisciplines(){
+		$disciplines = Database::select(array("name", "cod_disc"), array("disciplines"), "1=1");
+		return json_encode($disciplines);
+	}
+	public function showTeachers(){
+		$teachers = Database::select(array("name", "id"), array("users"), "1=1");
+		return json_encode($teachers);
+	}
 }
  ?>
