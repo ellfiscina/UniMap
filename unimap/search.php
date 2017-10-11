@@ -31,9 +31,9 @@
 						<button id = "btnSigned" class="btn dropdown-toggle" type="button" data-toggle="dropdown">
 							<span class="caret"></span></button>
 						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="#">Cadastrar Disciplina</a></li>
-							<li><a href="#">Editar Usuário</a></li>
-							<li><a href="#">Logout</a></li>
+							<li><a id="btnCreateDiscipline" data-toggle="modal" data-target="#modalCadastroD" href="#">Cadastrar Disciplina</a></li>
+							<li><a id="btnEdit" data-toggle="modal" data-target="#modalEditar" href="#">Editar Usuário</a></li>
+							<li><a id="btnLogout" href="#">Logout</a></li>
 						</ul>
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-						<button type="button" class="btn btn-warning" data-dismiss="modal">Cadastrar</button>
+						<button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#modalCadastroU">Cadastrar</button>
 						<input type="submit"  class="btn btn-success" value='Entrar'><br>
 					</div>
 				</form>
@@ -75,6 +75,89 @@
 		</div>
 	</section>
 	<div id="modalPesquisa" class="modal fade" role="dialog"></div>
+	<div id="modalCadastroD" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Cadastrar Disciplina</h4>
+				</div>
+				<form method="POST" id='cadastroFormDisc'>
+					<div class="modal-body">
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-book" aria-hidden="true"></i></span>
+						  <input type="text" id="nome" class="form-control" name="nome" placeholder="Nome da Disciplina" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-users" aria-hidden="true"></i></span>
+						  <input type="text" id="department" class="form-control" name="department" placeholder="Colegiado" aria-describedby="basic-addon1">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<span id="msgErrorCD"></span>
+						<input type="submit"  class="btn btn-success" value='Entrar'><br>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="modalCadastroU" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Cadastrar Usuário</h4>
+				</div>
+				<form method="POST" id='cadastroFormUser'>
+					<div class="modal-body">
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+						  <input type="text" id="cpf" class="form-control" name="cpf" placeholder="CPF" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+						  <input type="text" id="name" class="form-control" name="name" placeholder="Nome" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at" aria-hidden="true"></i></span>
+						  <input type="email" id="email" class="form-control" name="email" placeholder="Email" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+						  <input type="password" id="password" class="form-control" name="pass" placeholder="Senha" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+						  <input type="password" id="password" class="form-control" name="passConf" placeholder="Confirmação de Senha" aria-describedby="basic-addon1">
+						</div><br>
+						<div class="radio-inline">
+							<label class="radio-inline">
+								<input type="radio" name="type" id="typeA" value="A" checked>
+								Aluno
+							</label>
+						</div>
+						<div class="radio-inline">
+							<label class="radio-inline">
+								<input type="radio" name="type" id="typeP" value="P" checked>
+								Professor
+							</label>
+						</div>
+						<div class="radio-inline">
+							<label class="radio-inline">
+								<input type="radio" name="type" id="typeC" value="C" checked>
+								Coordenação
+							</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<span id="msgErrorCU"></span>
+						<input type="submit"  class="btn btn-success" value='Cadastrar'><br>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="modalEditar" class="modal fade" role="dialog"></div>
 	<footer></footer>
 </body>
 	<script type="text/javascript" src="jquery/jquery.min.js"></script>

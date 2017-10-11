@@ -87,6 +87,7 @@ class IFace
 	public function login($cpf, $pass){
 		$user = new User();
 		if($user->validateUser($cpf, $pass)){
+			$_SESSION["user"]["cpf"] = $user->get("cpf");
 			$_SESSION["user"]["name"] = $user->get("name");
 			$_SESSION["user"]["email"] = $user->get("email");
 			$_SESSION["user"]["type"] = $user->get("type");

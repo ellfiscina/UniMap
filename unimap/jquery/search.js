@@ -1,11 +1,11 @@
 $(document).ready(function(){
 	$.getJSON("actions.php?action=search&term="+get, function(json){
-		$("#results").append("Disciplinas<hr>");
+		$("#results").append("<h1>Disciplinas</h1><hr class='dash'>");
 		$(json["disciplines"]).each(function(){
 			console.log($(this));
 			$("#results").append("<a class='discipline' data-toggle='modal' data-target='#modalPesquisa' href='' id='"+$(this)[0]["cod_disc"]+"'>"+$(this)[0]["name"]+"</a><br>");
 		});
-		$("#results").append("<hr>Professores<hr>");
+		$("#results").append("<hr><h1>Professores</h1><hr class='dash'>");
 		$(json["teachers"]).each(function(){
 			console.log($(this));
 			$("#results").append("<a class='teacher' data-toggle='modal' data-target='#modalPesquisa' href='' id='"+$(this)[0]["id"]+"'>"+$(this)[0]["name"]+"</a><br>");
