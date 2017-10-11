@@ -117,11 +117,9 @@ class IFace
 		$user->set("email", $_POST["email"]);
 		$user->set("type", $_POST["type"]);
 		$result = $user->signUp($_POST["pass"], $_POST["passConf"]);
-		if($result["cod"] != 0)
-			return json_encode($result);
-		else{
+		if($result["cod"] == 0)
 			$this->login($user->get("cpf"), $_POST["pass"]);
-		}
+		return json_encode($result);
 	}
 
 	public function editUser(){
@@ -148,6 +146,7 @@ class IFace
 
 	public function createDiscipline(){
 		$discpline = new Discipline();
+		$discpline->set("id", $_POST["cod_disc"]);
 		$discpline->set("name", $_POST["name"]);
 		$discpline->set("department", $_POST["department"]);
 		$result = $discpline->create();

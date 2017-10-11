@@ -233,3 +233,12 @@ p{
 	width: fit-content;
 }
 
+.msgError{
+	text-align: center; 
+	background-color: #FAA; 
+	border-radius: 5px; 
+	border: 1px solid #F55; 
+	color: white; 
+	margin: 10px; 
+	display: none;
+}

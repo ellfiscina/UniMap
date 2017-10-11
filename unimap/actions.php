@@ -50,7 +50,7 @@ spl_autoload_register(function ($class_name) {
 			echo $interface->removeUser();
 			break;	
 		case "createDiscipline":
-			echo $interface->vreateDiscipline();
+			echo $interface->createDiscipline();
 			break;	
 		case "revokeAccess":
 			echo $interface->revokeAccess();

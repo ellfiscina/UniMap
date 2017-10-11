@@ -263,4 +263,30 @@ $('#signed').hide();
  	window.location.assign("search.php?term="+$("#inputSearch").val());
  });
 
+ $("#cadastroFormUser").submit(function(){
+ 	$.post("actions.php?action=signUp", $("#cadastroFormUser").serialize()).done(function(data){
+ 		console.log(data);
+ 		data = JSON.parse(data);
+ 		if(data["cod"]==0) window.location.reload();
+ 		else{
+
+ 			$("#msgErrorCU").show();
+ 			$("#msgErrorCU").html(data["msg"]);
+ 		}
+ 	});
+ });
+ $("#cadastroFormDisc").submit(function(){
+ 	$.post("actions.php?action=createDiscipline", $("#cadastroFormDisc").serialize()).done(function(data){
+ 		console.log(data);
+ 		data = JSON.parse(data);
+ 		if(data["cod"]==0) window.location.reload();
+ 		else{
+
+ 			$("#msgErrorCD").show();
+ 			$("#msgErrorCD").html(data["msg"]);
+ 		}
+ 	});
+ });
+
+
 });
