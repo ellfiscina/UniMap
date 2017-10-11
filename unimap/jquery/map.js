@@ -207,6 +207,7 @@ $(document).ready(function(){
 		'</div>' +
 		'</div>' +
 		'<div class="modal-footer" >' +
+		'<button type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Solicitar</button>' +
 		'<button id="btnR" '+(logado?'data-toggle="modal" data-target="#modalReserva"':"")+' type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Reservar</button>' +
 		'<button '+(logado?'data-toggle="modal" data-target="#modalAutoriza"':"")+' type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Autorizar</button>' +
 		'</div></div></div>';
@@ -222,18 +223,17 @@ $(document).ready(function(){
 			'<form method="POST" id="cadastroFormDisc">' +
 			'<div class="modal-body">' +
 			'<div class="input-group">' +
-			'<label>Disciplina </label>' +
+			'<label style="margin-right: 10px;">Disciplina </label>' +
 			'<input list="disciplinas" name="disciplinas">' +
 			'<datalist id="disciplinas">' +
 			'</datalist>' +
-			'</div>' +
+			'</div><br>' +
 			'<div class="input-group">' +
-			'<label>Professor </label>' +
+			'<label style="margin-right: 11px;">Professor </label>' +
 			'<input list="profs" name="profs">' +
 			'<datalist id="profs">' +
 			'</datalist>' +
-			'</div>' +
-			'<div class="input-group">' +
+			'</div><br>' +
 			'<div class="row">' +
   			'<div class="col-md-6">' +
   			'<div class="input-group">' +
@@ -246,18 +246,34 @@ $(document).ready(function(){
   			'<label>Horário de término </label>' +
   			'<input type="text" id="inicio" class="form-control" name="inicio" placeholder="10" aria-describedby="basic-addon1">' +
   			'</div>' +
-  			'</div>' +
-  			'<div class="radioe">' +
-  			'<label class="radio">' +
-  			'<input type="radio" name="type" id="semester" value="S" checked>' +
+  			'</div></div><br>' +
+  			'<div class="row">' +
+  			'<div class="col-md-3">' +
+  			'<div class="form-check">' +
+  			'<label class="form-check-label">' +
+  			'<input class="form-check-input" type="radio" name="type" id="semester" value="S" checked>' +
   			'Dia da Semana</label>' +
-  			'</div>' +
-  			'<div class="radio">' +
-  			'<label class="radio">' +
-  			'<input type="radio" name="type" id="day" value="D" checked>' +
+  			'</div></div>' +
+  			'<div id="week" class="col-md-9">' +
+  			'<div class="checkboxes">'+
+    		'<label for="s"><input type="checkbox" id="s" /> <span class="checkLabel">Monday</span></label>'+
+    		'<label for="t"><input type="checkbox" id="t" /> <span class="checkLabel">Tuesday</span></label>'+
+    		'<label for="w"><input type="checkbox" id="w" /> <span class="checkLabel">Wednesday</span></label>'+
+  			'<label for="x"><input type="checkbox" id="x" /> <span class="checkLabel" style="margin-right: 50px;">Thursday</span></label>'+
+    		'<label for="y"><input type="checkbox" id="y" /> <span class="checkLabel" style="margin-right: 74px;">Friday</span></label>'+
+    		'<label for="z"><input type="checkbox" id="z" /> <span class="checkLabel">Saturday</span></label>'+
+  			'</div>'+
+  			'</div></div><br>' +
+  			'<div class="row">' +
+  			'<div class="col-md-3">' +
+  			'<div class="form-check">' +
+  			'<label class="form-check-label">' +
+  			'<input class="form-check-input" type="radio" name="type" id="day" value="D" checked>' +
   			'Data</label>' +
-  			'</div>' +
-			'</div>' +
+  			'</div></div>' +
+  			'<div class="col-md-6">' +
+  			'<input type="date" id="dia" class="form-control" name="dia" aria-describedby="basic-addon1">' +
+  			'</div></div>' +
 			'<div class="modal-footer">' +
 			'<span id="msgErrorCD"></span>' +
 			'<input type="submit"  class="btn btn-success" value="Reservar"><br>' +
@@ -276,6 +292,25 @@ $(document).ready(function(){
 				$(json).each(function(){
 					$("#profs").append("<option id='"+ $(this)["name"] +"' value='"+ $(this)["name"]+"'>'"+ $(this)["id"] +"'</option>");
 				});
+			});
+			
+			$('input[value="S"]').prop("checked",true);
+			$("#dia").hide();
+			$("input[type='radio']").change(function(){
+
+			   if($(this).val()=="S"){
+			      	$("#week").show();
+			     	$("#dia").hide();
+			   }
+			   else if($(this).val()=="D"){
+			   		$("#week").hide();
+			      	$("#dia").show();
+			   }
+			   else{
+			       	$("#week").hide();
+			      	$("#dia").hide(); 
+			   }
+
 			});
 		});
 
@@ -379,7 +414,7 @@ $('#btnEdit').click(function(){
 	$("#modalEditar").html(html);
 });
 
-
+$('input[value="A"]').prop("checked",true);
 
 
 

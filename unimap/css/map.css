@@ -236,3 +236,13 @@ section p{
     margin-top: 6px;
     margin-left: 4px;
 }
+.checkLabel{
+	margin-right: 60px;
+}
+.teacher, .discipline{
+	font-size: large;
+}
+.dash{
+	border-style: inset;
+    border-width: 1px;
+}
