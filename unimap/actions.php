@@ -38,6 +38,9 @@ spl_autoload_register(function ($class_name) {
 			echo $interface->editUser();
 			break;	
 		case "reserve":
+			unset($_POST["disciplinas"]);
+			unset($_POST["profs"]);
+			unset($_POST["type"]);
 			echo $interface->reserve();
 			break;	
 		case "askRoom":

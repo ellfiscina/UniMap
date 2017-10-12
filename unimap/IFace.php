@@ -32,11 +32,15 @@ class IFace
 			for($j = 7; $j <= 22; $j++){
 				$schedule = new Schedule();
 				$schedule->getSchedule($room->get("id"), $date, $j);
-				//f($schedule->get("room") != NULL){
+				if($schedule->get("room") != NULL){
 					$return[date("l", strtotime($date))][$j]["discipline"]["id"] = $schedule->get("discipline");
-					$return[date("l", strtotime($date))][$j]["discipline"]["name"] = Database::select(array("name"), array("disciplines"), "cod_disc = ".$schedule->get("discipline"))[0]["name"];
+					$return[date("l", strtotime($date))][$j]["discipline"]["name"] = Database::select(array("name"), array("disciplines"), "cod_disc = '".$schedule->get("discipline")."'")[0]["name"];
 					$return[date("l", strtotime($date))][$j]["teacher"]["name"] = utf8_encode(Database::select(array("name"), array("users"), "cpf = ".$schedule->get("teacher"))[0]["name"]);
-				//}
+				} else {
+					$return[date("l", strtotime($date))][$j]["discipline"]["id"] = NULL;
+					$return[date("l", strtotime($date))][$j]["discipline"]["name"] = NULL;
+					$return[date("l", strtotime($date))][$j]["teacher"]["name"] = NULL;
+				}
 			}
 		}
 		return json_encode($return);
@@ -165,7 +169,7 @@ class IFace
 
 	public function reserve(){
 		$user = new User();
-		$user->getUser($_SESSION["user"]["cpf"]);
+		$user->getUser($_POST["teacher"]);
 		return json_encode($user->reserveRoom($_POST));
 	}
 

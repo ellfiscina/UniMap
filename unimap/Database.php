@@ -42,6 +42,7 @@ class Database
 		$fields = rtrim($fields, ", ").")";
 		$values = rtrim($values, ", ").")";
 		$query .= $fields." VALUES ".$values.";";
+		// echo $query;
 		return Database::$db->exec($query);
 	}
 

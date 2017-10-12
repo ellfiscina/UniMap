@@ -220,7 +220,7 @@ $(document).ready(function(){
 			'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
 			'<h4 class="modal-title">Reservar Sala</h4>' +
 			'</div>' +
-			'<form method="POST" id="cadastroFormDisc">' +
+			'<form method="POST" id="reserveForm">' +
 			'<div class="modal-body">' +
 			'<div class="input-group">' +
 			'<label style="margin-right: 10px;">Disciplina </label>' +
@@ -238,13 +238,13 @@ $(document).ready(function(){
   			'<div class="col-md-6">' +
   			'<div class="input-group">' +
   			'<label>Horário de início </label>' +
-  			'<input type="text" id="inicio" class="form-control" name="inicio" placeholder="8" aria-describedby="basic-addon1">' +
+  			'<input type="text" id="inicio" class="form-control" name="initialTime" placeholder="8" aria-describedby="basic-addon1">' +
   			'</div>' +
   			'</div>' +
   			'<div class="col-md-6">' +
   			'<div class="input-group">' +
   			'<label>Horário de término </label>' +
-  			'<input type="text" id="termino" class="form-control" name="termino" placeholder="10" aria-describedby="basic-addon1">' +
+  			'<input type="text" id="termino" class="form-control" name="finalTime" placeholder="10" aria-describedby="basic-addon1">' +
   			'</div>' +
   			'</div></div><br>' +
   			'<div class="row">' +
@@ -256,12 +256,12 @@ $(document).ready(function(){
   			'</div></div>' +
   			'<div id="week" class="col-md-9">' +
   			'<div class="checkboxes">'+
-    		'<label for="s"><input type="checkbox" id="s" /> <span class="checkLabel">Monday</span></label>'+
-    		'<label for="t"><input type="checkbox" id="t" /> <span class="checkLabel">Tuesday</span></label>'+
-    		'<label for="w"><input type="checkbox" id="w" /> <span class="checkLabel">Wednesday</span></label>'+
-  			'<label for="x"><input type="checkbox" id="x" /> <span class="checkLabel" style="margin-right: 50px;">Thursday</span></label>'+
-    		'<label for="y"><input type="checkbox" id="y" /> <span class="checkLabel" style="margin-right: 74px;">Friday</span></label>'+
-    		'<label for="z"><input type="checkbox" id="z" /> <span class="checkLabel">Saturday</span></label>'+
+    		'<label for="s"><input type="checkbox" name="weekDay[]" value="Monday" id="s" /> <span class="checkLabel">Monday</span></label>'+
+    		'<label for="t"><input type="checkbox" name="weekDay[]" value="Tuesday" id="t" /> <span class="checkLabel">Tuesday</span></label>'+
+    		'<label for="w"><input type="checkbox" name="weekDay[]" value="Wednesday" id="w" /> <span class="checkLabel">Wednesday</span></label>'+
+  			'<label for="x"><input type="checkbox" name="weekDay[]" value="Thursday" id="x" /> <span class="checkLabel" style="margin-right: 50px;">Thursday</span></label>'+
+    		'<label for="y"><input type="checkbox" name="weekDay[]" value="Friday" id="y" /> <span class="checkLabel" style="margin-right: 74px;">Friday</span></label>'+
+    		'<label for="z"><input type="checkbox" name="weekDay[]" value="Saturday" id="z" /> <span class="checkLabel">Saturday</span></label>'+
   			'</div>'+
   			'</div></div><br>' +
   			'<div class="row">' +
@@ -272,19 +272,19 @@ $(document).ready(function(){
   			'Data</label>' +
   			'</div></div>' +
   			'<div class="col-md-6">' +
-  			'<input type="date" id="dia" class="form-control" name="dia" aria-describedby="basic-addon1">' +
+  			'<input type="date" id="dia" class="form-control" name="date" aria-describedby="basic-addon1">' +
   			'</div></div>' +
 			'<div class="modal-footer">' +
-			'<span id="msgErrorCD"></span>' +
+			'<span id="msgErrorReserve"></span>' +
 			'<input type="submit"  class="btn btn-success" value="Reservar"><br>' +
 			'</div>' +
-			'<input type="text" name="discipline" value="" id="disciplineHidden">' +
-			'<input type="text" name="teacher" value="" id="teacherHidden">' +
+			'<input type="hidden" name="discipline" value="" id="disciplineHidden">' +
+			'<input type="hidden" name="teacher" value="" id="teacherHidden">' +
+			'<input type="hidden" name="room" value="'+y+'" id="roomHidden">' +
 			'</form>' +
 			'</div>' +
 			'</div>';
 			$("#modalReserva").html(html);
-
 
 			$("#disciplinaInput").on("input", function(){
 				$("#disciplineHidden").val($("option[value='"+$(this).val()+"']").html());
@@ -301,6 +301,18 @@ $(document).ready(function(){
 			$.getJSON("actions.php?action=showTeachers", function(json){
 				$(json).each(function(){
 					$("#profs").append("<option id='"+ $(this)[0]["name"] +"' value='"+ $(this)[0]["name"]+"'>"+ $(this)[0]["id"] +"</option>");
+				});
+			});
+			$("#reserveForm").submit(function(){
+				$.post("actions.php?action=reserve", $("#reserveForm").serialize()).done(function(data){
+					console.log(data);
+					data = JSON.parse(data);
+					if(data["cod"]==0) window.location.reload();
+					else{
+
+						$("#msgErrorReserve").show();
+						$("#msgErrorReserve").html(data["msg"]);
+					}
 				});
 			});
 			
@@ -364,7 +376,7 @@ $(document).ready(function(){
 			'</tr></tbody>' +
 			'</table>' +
 			'</div>' ;
-
+			html = html.replace(/null/g, "---");
 			$('#containerSchedule').html(html);
 		});
 });

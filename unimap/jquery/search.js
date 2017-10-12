@@ -40,7 +40,7 @@ $(document).ready(function(){
 			}
 
 			html += '</tbody></table></div>';
-
+			html = html.replace(/null/g, "---");
 			$('.modal-title').html($(this).html());
 			$('#containerSearch').html(html);
 		});
@@ -79,7 +79,7 @@ $(document).ready(function(){
 			}
 
 			html += '</tbody></table></div>';
-
+			html = html.replace(/null/g, "---");
 			$('.modal-title').html($(this).html());
 			$('#containerSearch').html(html);
 		},

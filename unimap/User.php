@@ -149,23 +149,43 @@ class User
 	}
 
 	public function reserveRoom($data){
-		if(isset($data["date"])){
+		if(isset($data["weekDay"])){
+			$weekDay = $data["weekDay"];
+			foreach ($weekDay as $key => $value) {
+				$data["weekDay"] = $value;
+				$where = "(weekDay = \"".$data["weekDay"]."\")AND room = \"".$data["room"]."\" AND ((initialTime < ".$data["finalTime"]." AND finalTime > ".$data["initialTime"].") OR (initialTime > ".$data["initialTime"]." AND initialTime < ".$data["finalTime"].") OR (finalTime > ".$data["initialTime"]." AND finalTime < ".$data["finalTime"].") OR (initialTime > ".$data["initialTime"]." AND finalTime < ".$data["finalTime"]."))";
+				$reservations = Database::select(array("*"), array("reservations"), $where);
+
+				if($reservations){
+					$return = array("cod" => 1, "msg" => "Houve choque de hor&aacute;rio, por favor, tente em outro hor&aacute;rio."); break;
+				} else {
+					$data["teacher"] = $this->get("cpf");
+					if(Database::insert("reservations", $data))
+						$return = array("cod" => 0, "msg" => "Reserva efetuada com sucesso!");
+					else{
+						$return = array("cod" => 2, "msg" => "Ocorreu um erro com o registro, por favor, entre em contato com a administra&ccedil;&atilde;o."); break;
+					}
+				}
+			}
+		} else {
 			$weekDay = date('l', strtotime($data["date"]));
 
 			$where = "(date = \"".$data["date"]."\" OR weekDay = \"".$weekDay."\")AND room = \"".$data["room"]."\" AND ((initialTime < ".$data["finalTime"]." AND finalTime > ".$data["initialTime"].") OR (initialTime > ".$data["initialTime"]." AND initialTime < ".$data["finalTime"].") OR (finalTime > ".$data["initialTime"]." AND finalTime < ".$data["finalTime"].") OR (initialTime > ".$data["initialTime"]." AND finalTime < ".$data["finalTime"]."))";
-		} else {
-			$where = "(weekDay = \"".$data["weekDay"]."\")AND room = \"".$data["room"]."\" AND ((initialTime < ".$data["finalTime"]." AND finalTime > ".$data["initialTime"].") OR (initialTime > ".$data["initialTime"]." AND initialTime < ".$data["finalTime"].") OR (finalTime > ".$data["initialTime"]." AND finalTime < ".$data["finalTime"].") OR (initialTime > ".$data["initialTime"]." AND finalTime < ".$data["finalTime"]."))";
+			$reservations = Database::select(array("*"), array("reservations"), $where);
+				
+				if($reservations){
+					$return = array("cod" => 1, "msg" => "Houve choque de hor&aacute;rio, por favor, tente em outro hor&aacute;rio.");
+				} else {
+					$data["teacher"] = $this->get("cpf");
+					if(Database::insert("reservations", $data))
+						$return = array("cod" => 0, "msg" => "Reserva efetuada com sucesso!");
+					else
+						$return = array("cod" => 2, "msg" => "Ocorreu um erro com o registro, por favor, entre em contato com a administra&ccedil;&atilde;o.");
+				}
+			
 		}
-		$reservations = Database::select(array("*"), array("reservations"), $where);
-		if($reservations){
-			return array("cod" => 1, "msg" => "Houve choque de hor&aacute;rio, por favor, tente em outro hor&aacute;rio.");
-		} else {
-			$data["user"] = $this->get("cpf");
-			if(Database::insert("reservations", $data))
-				return array("cod" => 0, "msg" => "Reserva efetuada com sucesso!");
-			else
-				return array("cod" => 2, "msg" => "Ocorreu um erro com o registro, por favor, entre em contato com a administra&ccedil;&atilde;o.");
-		}
+		return $return;
+		
 	}
 
 	public function askRoom($room){
