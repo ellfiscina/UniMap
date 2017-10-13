@@ -199,9 +199,12 @@ section p{
 #modalAula .modal-dialog, #modalPesquisa .modal-dialog{
 	width: 70%;
 }
+#containerSchedule, #containerSearch{
+	width: auto;
+}
 #modalAula .table, #modalPesquisa .table{
 	margin: auto;
-	width: 70%;
+	width: auto;
 }
 #modalColegiado .container{
 	width: 100%;
@@ -232,7 +235,6 @@ section p{
 .form-group{
 	width: fit-content;
 }
-<<<<<<< HEAD
 
 .msgError{
 	text-align: center; 
@@ -242,7 +244,7 @@ section p{
 	color: white; 
 	margin: 10px; 
 	display: none;
-=======
+}
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
     margin-top: 6px;
     margin-left: 4px;
@@ -256,5 +258,4 @@ section p{
 .dash{
 	border-style: inset;
     border-width: 1px;
->>>>>>> cd8a8aa3454ae295b972a397e73132152cbd8f8f
 }
