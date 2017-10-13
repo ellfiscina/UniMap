@@ -314,7 +314,7 @@ $(document).ready(function(){
   			'<input type="date" id="dia" class="form-control" name="date" aria-describedby="basic-addon1">' +
   			'</div></div>' +
 			'<div class="modal-footer">' +
-			'<span id="msgErrorReserve"></span>' +
+			'<span class="msgError" id="msgErrorReserve"></span>' +
 			'<input type="submit"  class="btn btn-success" value="Reservar"><br>' +
 			'</div>' +
 			'<input type="hidden" name="discipline" value="" id="disciplineHidden">' +
@@ -466,7 +466,7 @@ $('#btnEdit').click(function(){
 	'</div><br>' +
 	'</div>' +
 	'<div class="modal-footer">' +
-	'<span id="msgErrorEU"></span>' +
+	'<span class="msgError" id="msgErrorEU"></span>' +
 	'<input type="submit"  class="btn btn-success" value="Editar"><br>' +
 	'</div>' +
 	'</form>' +
