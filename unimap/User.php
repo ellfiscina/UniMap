@@ -211,11 +211,12 @@ class User
 	}
 
 	public function revokeAccess($user, $room){
+
 		$auth = Database::select(array("*"), array("authorizations"), "user = \"".$user."\" AND room = ".$room);
 		if(!$auth){
 			return array("cod"=>1, "msg" => "Usu&aacute;rio n&atilde;o tem acesso à sala.");
 		}
-		if(Database::delete("authorizations", "cpf = \"".$user."\" AND room = ".$room ))
+		if(Database::delete("authorizations", "user = \"".$user."\" AND room = ".$room ))
 			return array("cod" => 0, "msg" => "Autoriza&ccedil;&atilde;o revogada!");
 		return array("cod" => 2, "msg" => "Ocorreu um erro com o registro, por favor, entre em contato com a administra&ccedil;&atilde;o.");
 	}

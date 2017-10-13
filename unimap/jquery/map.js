@@ -72,13 +72,14 @@ $(document).ready(function(){
 	$('#signed').hide();
 
 	$.getJSON("actions.php?action=showSessionInfo", function(json){
-		console.log("hey");
 		if(json){
 			logado = json;
 			$('#signin').hide();
 			$('#signed').show();
 			$("#btnSigned").html('<p>'+json["name"]+'</p><i class="fa fa-user fa-lg" aria-hidden="true"></i>');	
-
+			if(logado["type"] == 'C'){
+				$("#userMenu").prepend('<li><a id="btnCreateDiscipline" data-toggle="modal" data-target="#modalCadastroD" href="#">Cadastrar Disciplina</a></li>');
+			}
 			if(logado["type"] == 'G'){
 					setInterval(function(){
 						$.getJSON("actions.php?action=showNotification", function(json){
@@ -119,7 +120,6 @@ $(document).ready(function(){
 	showRoom(0);
 
 	$.getJSON("actions.php?action=showRooms", function(json){
-		console.log(json);
 		$('.aula').each(function() {
 			$(this).addClass(json[$(this).attr("id")]?"emptyroom":"usedroom");
 		});
@@ -228,29 +228,43 @@ $(document).ready(function(){
 	$('.aula, .aulaR').click(function(){
 		var y = $(this).attr('id');
 
+		$.getJSON("actions.php?action=checkAuthorization&room="+y, function(json){
+			console.log(json);
+			if(json){
+				$("#roomModalFooter").prepend('<button id="btnS" type="button" class="btn btn-primary">Solicitar</button>');
+				$("#btnS").click(function(){
+					$.post("actions.php?action=askRoom", {room: y}).done(function(data){
+						data = JSON.parse(data);
+						alert(data["msg"]);
+					});
+				});
+			} else {
+				$("#roomModalFooter").prepend('<button id="btnS" type="button" class="btn btn-primary disabled">Solicitar</button>');
+			}
+		});
+
 		var html = '<div class="modal-dialog">' +
 		'<div class="modal-content">' +
 		'<div class="modal-header">' +
 		'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
 		'<h4 class="modal-title">Grade de Horário</h4>' +
 		'</div><div class="modal-body">' +
-		'<div class="container" id="containerSchedule">'+
+		'<div class="container">'+
+		'<div id="containerSchedule">'+
+		'</div>'+
+		'<div id="containerAuthorized"><p>Usuários Autorizados:<hr></div>'+
 		'</div>' +
 		'</div>' +
-		'<div class="modal-footer" >' +
-		'<button id="btnS" type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Solicitar</button>' +
-		'<button id="btnR" '+(logado?'data-toggle="modal" data-target="#modalReserva"':"")+' type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Reservar</button>' +
-		'<button '+(logado?'data-toggle="modal" data-target="#modalAutoriza"':"")+' type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Autorizar</button>' +
+		'<div class="modal-footer" id="roomModalFooter">' +
+		'<button id="btnR" '+((logado && (logado["type"] == 'P' || logado["type"] == 'C'))?'data-toggle="modal" data-target="#modalReserva"':"")+' type="button" class="btn btn-primary '+((logado && (logado["type"] == 'P' || logado["type"] == 'C'))?"":"disabled")+'">Reservar</button>' +
+		'<button '+((logado && (logado["type"] == 'P' || logado["type"] == 'C'))?'data-toggle="modal" data-target="#modalAutoriza"':"")+' type="button" class="btn btn-primary '+((logado && (logado["type"] == 'P' || logado["type"] == 'C'))?"":"disabled")+'">Autorizar</button>' +
 		'</div></div></div>';
 		$("#modalAula").html(html);
 		$("#autorizeRoomHidden").val(y);
 
-		$("#btnS").click(function(){
-			$.post("actions.php?action=askRoom", {room: y}).done(function(data){
-				data = JSON.parse(data);
-				alert(data["msg"]);
-			});
-		});
+
+
+		
 
 		$("#btnR").click(function(){
 			var html  = '<div class="modal-dialog">' +
@@ -376,7 +390,6 @@ $(document).ready(function(){
 		});
 
 		$.getJSON("actions.php?action=showRoomSchedule&room="+y, function(json){
-			console.log(json);
 			var html = '<div class="table-responsive">' +
 			'<table class="table">' +
 			'<thead><tr>' +
@@ -418,6 +431,22 @@ $(document).ready(function(){
 			html = html.replace(/null/g, "---");
 			$('#containerSchedule').html(html);
 		});
+		if(logado["type"] == 'P'){
+			$.getJSON("actions.php?action=showAuthorizedByTeacher&room="+y, function(json){
+				$(json).each(function(){
+					
+					var html = '<p><span class="authorizedUser"><a href="#" id="'+$(this)[0]["id"]+'" class="btnRevoke" style="color: red;"><span class="glyphicon glyphicon-remove"></span></a> '+$(this)[0]["name"]+'</span>';
+					$("#containerAuthorized").append(html);	
+				});
+				$('.btnRevoke').click(function(){
+					var user = $(this).attr("id");
+					$.post("actions.php?action=revokeAccess", {user: user, room: y}).done(function(data){
+						window.location.reload();
+					});
+				});
+				
+			});
+		}
 });
 
 $("#loginForm").submit(function(){
@@ -440,7 +469,7 @@ $('#btnEdit').click(function(){
 	'<div class="modal-content">' +
 	'<div class="modal-header">' +
 	'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
-	'<h4 class="modal-title">Cadastrar Usuário</h4>' +
+	'<h4 class="modal-title">Editar Usuário</h4>' +
 	'</div>' +
 	'<form method="POST" id="editFormUser">' +
 	'<div class="modal-body">' +

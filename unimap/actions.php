@@ -70,5 +70,11 @@ spl_autoload_register(function ($class_name) {
 		case "showTeachers":
 			echo $interface->showTeachers();
 			break;
+		case "checkAuthorization":
+			echo $interface->checkAuthorization($_SESSION["user"]["cpf"], $_GET["room"]);
+			break;
+		case "showAuthorizedByTeacher":
+			echo $interface->showAuthorizedByTeacher($_SESSION["user"]["cpf"], $_GET["room"]);
+			break;
 	}
 ?>

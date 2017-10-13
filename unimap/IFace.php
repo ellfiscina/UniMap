@@ -162,7 +162,7 @@ class IFace
 	}
 
 	public function search($term){
-		$teacherResults = Database::select(array("id","name", "email"), array("users"), "name LIKE \"%".$term."%\"");
+		$teacherResults = Database::select(array("id","name", "email"), array("users"), "name LIKE \"%".$term."%\" AND type = 'P'");
 		$disciplineResults = Database::select(array("cod_disc", "name", "department"), array("disciplines"), "name LIKE \"%".$term."%\"");
 		$results = array("teachers" => $teacherResults, "disciplines" => $disciplineResults);
 		return json_encode($results);
@@ -199,7 +199,8 @@ class IFace
 
 	public function revokeAccess(){
 		$user = new User();
-		return json_encode($user->revokeAccess($_POST["user"], $_POST["room"]));
+		
+		return json_encode($user->revokeAccess(Database::select(array("cpf"), array("users"), "id=".$_POST["user"])[0]["cpf"], $_POST["room"]));
 	}
 	public function removeUser(){
 		$user = new User();
@@ -216,8 +217,16 @@ class IFace
 		return json_encode($disciplines);
 	}
 	public function showTeachers(){
-		$teachers = Database::select(array("name", "id"), array("users"), "1=1");
+		$teachers = Database::select(array("name", "id"), array("users"), "type='P'");
 		return json_encode($teachers);
+	}
+	public function checkAuthorization($user, $room){
+		$result = Database::select(array("*"), array("authorizations"), "user = '".$user."' AND room = '".$room."'");
+		return json_encode($result?true:false);
+	}
+	public function showAuthorizedByTeacher($teacher, $room){
+		$results = Database::select(array("users.name", "users.id"), array("authorizations", "users"), "teacher = '".$teacher."' AND user = users.cpf AND room = ".$room);
+		return json_encode($results);
 	}
 }
  ?>

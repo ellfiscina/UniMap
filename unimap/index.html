@@ -27,8 +27,8 @@
 					<div  id = "signed" class="dropdown">
 						<button id = "btnSigned" class="btn dropdown-toggle" type="button" data-toggle="dropdown">
 							<span class="caret"></span></button>
-						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a id="btnCreateDiscipline" data-toggle="modal" data-target="#modalCadastroD" href="#">Cadastrar Disciplina</a></li>
+						<ul id="userMenu" class="dropdown-menu dropdown-menu-right">
+							
 							<li><a id="btnEdit" data-toggle="modal" data-target="#modalEditar" href="#">Editar Usuário</a></li>
 
 							<li><a id="btnLogout" href="#">Logout</a></li>
@@ -555,6 +555,12 @@
 							<label class="radio-inline">
 								<input type="radio" name="type" id="typeC" value="C" checked>
 								Coordenação
+							</label>
+						</div>
+						<div class="radio-inline">
+							<label class="radio-inline">
+								<input type="radio" name="type" id="typeC" value="G" checked>
+								Guardinha?
 							</label>
 						</div>
 					</div>
