@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 04, 2017 at 02:10 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Host: 127.0.0.1
+-- Generation Time: 13-Out-2017 às 14:42
+-- Versão do servidor: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,29 +19,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `unimap_teste`
 --
-DROP DATABASE IF EXISTS `unimap_teste`;
 CREATE DATABASE IF NOT EXISTS `unimap_teste` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `unimap_teste`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `authorizations`
+-- Estrutura da tabela `authorizations`
 --
 
-DROP TABLE IF EXISTS `authorizations`;
 CREATE TABLE `authorizations` (
   `user` varchar(11) NOT NULL,
-  `room` int(11) NOT NULL
+  `room` int(11) NOT NULL,
+  `teacher` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `authorizations`
+--
+
+INSERT INTO `authorizations` (`user`, `room`, `teacher`) VALUES
+('08799757419', 1, '08799757419');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `disciplines`
+-- Estrutura da tabela `disciplines`
 --
 
-DROP TABLE IF EXISTS `disciplines`;
 CREATE TABLE `disciplines` (
   `cod_disc` varchar(8) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -51,20 +54,18 @@ CREATE TABLE `disciplines` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `disciplines`
+-- Extraindo dados da tabela `disciplines`
 --
 
 INSERT INTO `disciplines` (`cod_disc`, `name`, `department`) VALUES
-('1', 'Engenharia de Software', 'Engenharia da Computacao'),
 ('CCMP0046', 'Engenharia de Software', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifications`
+-- Estrutura da tabela `notifications`
 --
 
-DROP TABLE IF EXISTS `notifications`;
 CREATE TABLE `notifications` (
   `cod` int(11) NOT NULL,
   `room` int(11) NOT NULL,
@@ -74,34 +75,39 @@ CREATE TABLE `notifications` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reservations`
+-- Estrutura da tabela `reservations`
 --
 
-DROP TABLE IF EXISTS `reservations`;
 CREATE TABLE `reservations` (
-  `teacher` varchar(11) NOT NULL,
+  `user` varchar(11) NOT NULL,
   `room` int(11) NOT NULL,
+  `teacher` varchar(11) NOT NULL,
   `discipline` varchar(8) NOT NULL,
   `initialTime` int(11) NOT NULL,
   `finalTime` int(11) NOT NULL,
-  `weekDay` varchar(9) DEFAULT NULL,
-  `date` date DEFAULT NULL
+  `weekDay` varchar(9) NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `reservations`
+-- Extraindo dados da tabela `reservations`
 --
 
-INSERT INTO `reservations` (`teacher`, `room`, `discipline`, `initialTime`, `finalTime`, `weekDay`, `date`) VALUES
-('08799757419', 0, '1', 14, 16, 'Monday', '0000-00-00');
+INSERT INTO `reservations` (`user`, `room`, `teacher`, `discipline`, `initialTime`, `finalTime`, `weekDay`, `date`) VALUES
+('08799757419', 1, '08799757419', 'CCMP0046', 10, 12, '', '2017-10-11'),
+('', 1, '08799757419', 'CCMP0046', 10, 12, '', '2017-10-12'),
+('08799757419', 1, '08799757419', '1', 14, 16, '', '2017-10-01'),
+('', 1, '08799757419', 'CCMP0046', 16, 18, 'Monday', '0000-00-00'),
+('', 1, '08799757419', 'CCMP0046', 16, 18, 'Tuesday', '0000-00-00'),
+('', 2, '08799757419', 'CCMP0046', 10, 12, 'Friday', '0000-00-00'),
+('', 2, '08799757419', 'CCMP0046', 10, 12, 'Monday', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rooms`
+-- Estrutura da tabela `rooms`
 --
 
-DROP TABLE IF EXISTS `rooms`;
 CREATE TABLE `rooms` (
   `cod_sala` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -109,24 +115,33 @@ CREATE TABLE `rooms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rooms`
+-- Extraindo dados da tabela `rooms`
 --
 
 INSERT INTO `rooms` (`cod_sala`, `name`, `status`) VALUES
-(0, 'Sala 2', 'D'),
-(1, 'Sala 3', ''),
-(2, 'Sala 4', ''),
-(3, 'Sala 5', ''),
-(4, 'Sala 6', ''),
-(5, 'Sala 7', '');
+(1, 'Sala 1', 'D'),
+(2, 'Sala 2', ''),
+(3, 'Sala 3', ''),
+(4, 'Sala 4', ''),
+(5, 'Sala 5', ''),
+(6, 'Sala 6', ''),
+(7, 'Sala 7', ''),
+(8, 'Sala 8', ''),
+(9, 'Sala 9', ''),
+(10, 'Sala 10', ''),
+(11, 'Sala 11', ''),
+(12, 'Sala 12', ''),
+(13, 'Sala 13', ''),
+(14, 'Sala 14', ''),
+(15, 'Sala 15', ''),
+(16, 'Sala 16', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estrutura da tabela `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `cpf` varchar(11) NOT NULL,
@@ -137,11 +152,11 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `cpf`, `name`, `email`, `password`, `type`) VALUES
-(1, '08799757419', 'Joao Pedro', 'joaopedrofn@gmail.com', 'e8d95a51f3af4a3b134bf6bb680a213a', 'A');
+(0, '08799757419', 'Joao Pedro', 'joaopedrofn@gmail.com', 'e8d95a51f3af4a3b134bf6bb680a213a', 'G');
 
 --
 -- Indexes for dumped tables
@@ -151,7 +166,7 @@ INSERT INTO `users` (`id`, `cpf`, `name`, `email`, `password`, `type`) VALUES
 -- Indexes for table `authorizations`
 --
 ALTER TABLE `authorizations`
-  ADD PRIMARY KEY (`user`,`room`),
+  ADD PRIMARY KEY (`user`,`room`,`teacher`),
   ADD KEY `room` (`room`);
 
 --
@@ -172,7 +187,7 @@ ALTER TABLE `notifications`
 -- Indexes for table `reservations`
 --
 ALTER TABLE `reservations`
-  ADD PRIMARY KEY (`teacher`,`room`,`initialTime`),
+  ADD PRIMARY KEY (`room`,`teacher`,`initialTime`,`weekDay`,`date`),
   ADD KEY `room` (`room`);
 
 --
@@ -185,7 +200,7 @@ ALTER TABLE `rooms`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`cpf`);
+  ADD PRIMARY KEY (`id`,`cpf`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -196,38 +211,32 @@ ALTER TABLE `users`
 --
 ALTER TABLE `notifications`
   MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `cod_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `cod_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `authorizations`
+-- Limitadores para a tabela `authorizations`
 --
 ALTER TABLE `authorizations`
-  ADD CONSTRAINT `authorizations_ibfk_1` FOREIGN KEY (`room`) REFERENCES `rooms` (`cod_sala`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `authorizations_ibfk_2` FOREIGN KEY (`user`) REFERENCES `users` (`cpf`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `authorizations_ibfk_1` FOREIGN KEY (`room`) REFERENCES `rooms` (`cod_sala`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `notifications`
+-- Limitadores para a tabela `notifications`
 --
 ALTER TABLE `notifications`
-  ADD CONSTRAINT `room` FOREIGN KEY (`room`) REFERENCES `rooms` (`cod_sala`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `users` (`cpf`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `room` FOREIGN KEY (`room`) REFERENCES `rooms` (`cod_sala`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `reservations`
+-- Limitadores para a tabela `reservations`
 --
 ALTER TABLE `reservations`
-  ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`teacher`) REFERENCES `users` (`cpf`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`room`) REFERENCES `rooms` (`cod_sala`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
