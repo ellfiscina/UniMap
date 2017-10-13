@@ -144,8 +144,8 @@ class IFace
 		if($results){
 			$room = new Room();
 			$room->getRoom($results[0]["room"]);
-			$user = Database::select(array("name"), array("users"), "cpf = \"".$results[0]."\"")[0]["name"];
-			return json_encode(array("user" => $user, "room" => $room));
+			$user = Database::select(array("name"), array("users"), "cpf = \"".$results[0]["user"]."\"")[0]["name"];
+			return json_encode(array("user" => $user, "room" => array("name"=>$room->get("name"), "cod_sala" => $room->get("id"))));
 		} else{
 			return json_encode(FALSE);
 		}
@@ -181,7 +181,19 @@ class IFace
 
 	public function grantAccess(){
 		$user = new User();
-		return json_encode($user->grantAccess($_POST["user"], $_POST["room"]));
+		$cpfs = explode(";", str_replace(" ", "", $_POST["cpf"]));
+		$erro = null;
+		foreach ($cpfs as $key => $value) {
+			$result = $user->grantAccess($value, $_POST["room"]);	
+			if($result["cod"] != 0){
+				$erro[] = $value;
+			}
+		}
+		if($erro == NULL)
+			return json_encode($result);
+		else{
+			return json_encode(array("cod" => 4, "Ocorreu um erro na autoriza&ccedil;&atilde;o dos seguintes CPF's: <br>".implode(", ", $erro)));
+		}
 	}
 
 	public function revokeAccess(){

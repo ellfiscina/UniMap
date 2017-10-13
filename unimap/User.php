@@ -199,7 +199,7 @@ class User
 		if($auth){
 			return array("cod"=>1, "msg" => "Usu&aacute;rio j&aacute; tem acesso à sala.");
 		}
-		if(Database::insert("authorizations", array("user" => $user, "room" => $room)))
+		if(Database::insert("authorizations", array("user" => $user, "room" => $room, "teacher" => $_SESSION["user"]["cpf"])))
 			return array("cod" => 0, "msg" => "Autoriza&ccedil;&atilde;o concedida!");
 		return array("cod" => 2, "msg" => "Ocorreu um erro com o registro, por favor, entre em contato com a administra&ccedil;&atilde;o.");
 	}

@@ -79,6 +79,37 @@ $(document).ready(function(){
 			$('#signed').show();
 			$("#btnSigned").html('<p>'+json["name"]+'</p><i class="fa fa-user fa-lg" aria-hidden="true"></i>');	
 
+			if(logado["type"] == 'G'){
+					setInterval(function(){
+						$.getJSON("actions.php?action=showNotification", function(json){
+							if(json){
+								var html = '<div class="modal-dialog">' +
+									'<div class="modal-content">' +
+									'<div class="modal-header">' +
+									'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+									'<h4 class="modal-title">Notificação</h4>'+
+									'</div>'+
+									'<div class="modal-body">' +
+									'<div class="container">' +
+									json["room"]["name"]+" est&aacute; sendo solicitada."+
+									'</div>' +
+									'</div>' +
+									'<div class="modal-footer">'+
+									'<button id="answerNotificationButton" type="button" class="btn btn-primary">Abrir</button>' +
+									'</div>'+
+									'</div>' +
+									'</div>';
+								$("#modalNotification").html(html);
+								$("#modalNotification").modal("show");
+								$("#answerNotificationButton").click(function(){
+									$.post("actions.php?action=answerNotification&room="+json["room"]["cod_sala"]).done(function(){
+										window.location.reload();
+									});
+								});
+							}
+						});
+				}, 3000);
+			}
 		}
 	});
 	$("#btnLogout").click(function(){
@@ -207,11 +238,19 @@ $(document).ready(function(){
 		'</div>' +
 		'</div>' +
 		'<div class="modal-footer" >' +
-		'<button type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Solicitar</button>' +
+		'<button id="btnS" type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Solicitar</button>' +
 		'<button id="btnR" '+(logado?'data-toggle="modal" data-target="#modalReserva"':"")+' type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Reservar</button>' +
 		'<button '+(logado?'data-toggle="modal" data-target="#modalAutoriza"':"")+' type="button" class="btn btn-primary '+(logado?"":"disabled")+'">Autorizar</button>' +
 		'</div></div></div>';
 		$("#modalAula").html(html);
+		$("#autorizeRoomHidden").val(y);
+
+		$("#btnS").click(function(){
+			$.post("actions.php?action=askRoom", {room: y}).done(function(data){
+				data = JSON.parse(data);
+				alert(data["msg"]);
+			});
+		});
 
 		$("#btnR").click(function(){
 			var html  = '<div class="modal-dialog">' +
@@ -482,6 +521,17 @@ $('input[value="A"]').prop("checked",true);
  		}
  	});
  });
+
+ $("#autoriza").submit(function(){
+ 	$.post("actions.php?action=grantAccess", $("#autoriza").serialize()).done(function(data){
+ 		data = JSON.parse(data);
+ 		if(data["cod"] == 0) window.location.reload();
+ 		else{
+ 			$("#msgErrorAut").show();
+ 			$("#msgErrorAut").html(data["msg"]);
+ 		}
+ 	})
+ })
 
 
 });
