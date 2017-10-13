@@ -38,7 +38,7 @@ class Schedule
 		} else return FALSE;
 	}
 	public function getScheduleByDiscipline($discipline, $date, $time){
-		$where = "(date = \"".$date."\" OR weekDay = \"".date("l", strtotime($date))."\") AND discipline = ".$discipline." AND initialTime <= ".$time." AND finalTime > ".$time.";";
+		$where = "(date = \"".$date."\" OR weekDay = \"".date("l", strtotime($date))."\") AND discipline = '".$discipline."' AND initialTime <= ".$time." AND finalTime > ".$time.";";
 		$results = Database::select(array("*"), array("reservations"), $where);
 		if($results){
 			$results = $results[0];

@@ -77,8 +77,9 @@ class IFace
 			for($j = 7; $j <= 22; $j++){
 				$schedule = new Schedule();
 				$schedule->getScheduleByTeacher($teacher->get("cpf"), $date, $j);
+
 					$return[date("l", strtotime($date))][$j]["discipline"]["id"] = $schedule->get("discipline");
-					$return[date("l", strtotime($date))][$j]["discipline"]["name"] = Database::select(array("name"), array("disciplines"), "cod_disc = ".$schedule->get("discipline"))[0]["name"];
+					$return[date("l", strtotime($date))][$j]["discipline"]["name"] = $schedule->get("discipline")?Database::select(array("name"), array("disciplines"), "cod_disc = '".$schedule->get("discipline")."'")[0]["name"]:null;
 					$return[date("l", strtotime($date))][$j]["room"]["id"] = $schedule->get("room");
 					$return[date("l", strtotime($date))][$j]["room"]["name"] = Database::select(array("name"), array("rooms"), "cod_sala = ".$schedule->get("room"))[0]["name"];
 					$return[date("l", strtotime($date))][$j]["teacher"]["name"] = utf8_encode(Database::select(array("name"), array("users"), "cpf = ".$schedule->get("teacher"))[0]["name"]);
