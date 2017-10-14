@@ -8,19 +8,17 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema unimap
+-- Schema id2935162_unimap
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema unimap
+-- Schema id2935162_unimap
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `unimap` DEFAULT CHARACTER SET utf8 ;
-USE `unimap` ;
 
 -- -----------------------------------------------------
--- Table `unimap`.`users`
+-- Table `id2935162_unimap`.`users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unimap`.`users` (
+CREATE TABLE IF NOT EXISTS `id2935162_unimap`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cpf` VARCHAR(11) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
@@ -33,9 +31,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unimap`.`rooms`
+-- Table `id2935162_unimap`.`rooms`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unimap`.`rooms` (
+CREATE TABLE IF NOT EXISTS `id2935162_unimap`.`rooms` (
   `cod_sala` INT NOT NULL,
   `name` VARCHAR(45) NULL,
   PRIMARY KEY (`cod_sala`))
@@ -43,9 +41,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unimap`.`disciplines`
+-- Table `id2935162_unimap`.`disciplines`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unimap`.`disciplines` (
+CREATE TABLE IF NOT EXISTS `id2935162_unimap`.`disciplines` (
   `cod_disc` CHAR(6) NOT NULL,
   `name` VARCHAR(255) NULL,
   `department` VARCHAR(255) NULL DEFAULT '',
@@ -54,9 +52,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unimap`.`authorizations`
+-- Table `id2935162_unimap`.`authorizations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unimap`.`authorizations` (
+CREATE TABLE IF NOT EXISTS `id2935162_unimap`.`authorizations` (
   `user` VARCHAR(11) NOT NULL,
   `teacher` VARCHAR(11) NOT NULL,
   `room` INT NOT NULL,
@@ -65,47 +63,47 @@ CREATE TABLE IF NOT EXISTS `unimap`.`authorizations` (
   INDEX `teacher` (`teacher` ASC),
   CONSTRAINT `authorizations_ibfk_1`
     FOREIGN KEY (`user`)
-    REFERENCES `unimap`.`users` (`cpf`)
+    REFERENCES `id2935162_unimap`.`users` (`cpf`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `authorizations_ibfk_2`
     FOREIGN KEY (`teacher`)
-    REFERENCES `unimap`.`users` (`cpf`)
+    REFERENCES `id2935162_unimap`.`users` (`cpf`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_users_has_rooms_rooms1`
     FOREIGN KEY (`room`)
-    REFERENCES `unimap`.`rooms` (`cod_sala`)
+    REFERENCES `id2935162_unimap`.`rooms` (`cod_sala`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unimap`.`notifications`
+-- Table `id2935162_unimap`.`notifications`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unimap`.`notifications` (
+CREATE TABLE IF NOT EXISTS `id2935162_unimap`.`notifications` (
   `user` VARCHAR(11) NOT NULL,
   `room` INT NOT NULL,
   PRIMARY KEY (`user`, `room`),
   INDEX `fk_users_has_rooms_rooms2_idx` (`room` ASC),
   CONSTRAINT `fk_users_has_rooms_rooms2`
     FOREIGN KEY (`room`)
-    REFERENCES `unimap`.`rooms` (`cod_sala`)
+    REFERENCES `id2935162_unimap`.`rooms` (`cod_sala`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `notifications_ibfk_1`
     FOREIGN KEY (`user`)
-    REFERENCES `unimap`.`users` (`cpf`)
+    REFERENCES `id2935162_unimap`.`users` (`cpf`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unimap`.`reservations`
+-- Table `id2935162_unimap`.`reservations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unimap`.`reservations` (
+CREATE TABLE IF NOT EXISTS `id2935162_unimap`.`reservations` (
   `teacher` VARCHAR(11) NOT NULL,
   `room` INT NOT NULL,
   `discipline` CHAR(6) NOT NULL,
@@ -118,17 +116,17 @@ CREATE TABLE IF NOT EXISTS `unimap`.`reservations` (
   INDEX `fk_users_has_rooms_disciplines1_idx` (`discipline` ASC),
   CONSTRAINT `fk_users_has_rooms_disciplines1`
     FOREIGN KEY (`discipline`)
-    REFERENCES `unimap`.`disciplines` (`cod_disc`)
+    REFERENCES `id2935162_unimap`.`disciplines` (`cod_disc`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_has_rooms_rooms3`
     FOREIGN KEY (`room`)
-    REFERENCES `unimap`.`rooms` (`cod_sala`)
+    REFERENCES `id2935162_unimap`.`rooms` (`cod_sala`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `reservations_ibfk_1`
     FOREIGN KEY (`teacher`)
-    REFERENCES `unimap`.`users` (`cpf`)
+    REFERENCES `id2935162_unimap`.`users` (`cpf`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
